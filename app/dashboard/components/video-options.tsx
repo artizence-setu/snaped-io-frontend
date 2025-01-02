@@ -31,16 +31,16 @@ const VideoOptions = () => {
   ];
   return (
     <div>
-      <h2 className="font-extralight mb-2 text-lg text-black/80">
+      <h2 className="font-extralight mb-2 text-lg text-foreground/80">
         Create Video With Options
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
         {options.map((option, index) => (
           <div
             key={index}
-            className="bg-white shadow h-[410px] rounded-lg p-4 flex flex-col"
+            className="bg-background shadow h-[410px] rounded-lg p-4 flex flex-col"
           >
-            <h3 className="text-lg font-extralight text-center text-black/80">
+            <h3 className="text-lg font-extralight text-center text-foreground/80">
               {option.title}
             </h3>
             <div className="w-full overflow-hidden mt-2">
@@ -52,7 +52,7 @@ const VideoOptions = () => {
                 className="w-full object-cover"
               />
             </div>
-            <p className="mt-4 font-extralight text-black/50">
+            <p className="mt-4 font-extralight text-foreground/50">
               {option.description}
             </p>
             <div className="flex justify-center mt-auto">

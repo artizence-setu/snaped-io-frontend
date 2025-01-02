@@ -40,7 +40,7 @@ const Steps = () => {
       {steps.map((step, index) => (
         <div
           key={index}
-          className="bg-white shadow h-[264px] lg:h-80 xl:h-[264px] flex flex-col rounded-lg p-4"
+          className="bg-background shadow h-[264px] lg:h-80 xl:h-[264px] flex flex-col rounded-lg p-4"
         >
           <div className="flex w-full justify-between">
             <div className="p-2 bg-sky-200/30 rounded-lg">
@@ -50,7 +50,7 @@ const Steps = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg">{step.title}</h2>
-            <p className="text-black/70 text-sm leading-5 tracking-wider">
+            <p className="text-secondary-foreground/70 text-sm leading-5 tracking-wider">
               {step.description}
             </p>
           </div>

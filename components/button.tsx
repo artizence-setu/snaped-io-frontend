@@ -11,7 +11,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       ref={ref}
       {...props}
       className={clsx(
-        "bg-custom-gradient text-white font-thin px-4 py-1 rounded-lg text-sm flex items-center hover:opacity-80 transition-all",
+        "bg-custom-gradient text-white font-thin px-4 py-1 rounded-lg text-sm flex items-center hover:opacity-80 transition-all justify-center disabled:opacity-50 disabled:cursor-not-allowed",
         props.className
       )}
     >

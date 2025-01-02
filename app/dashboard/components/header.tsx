@@ -1,6 +1,6 @@
 "use client";
 import clsx from "clsx";
-import { TbMoon, TbBell, TbLogout } from "react-icons/tb";
+import { TbMoon, TbBell, TbLogout, TbSun } from "react-icons/tb";
 import { CgProfile, CgSupport } from "react-icons/cg";
 import { RiExchangeDollarLine } from "react-icons/ri";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { useMedia } from "react-use";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/button";
-import { Menu } from "lucide-react";
+import { Menu, Moon } from "lucide-react";
 import {
   TbLayoutDashboard,
   TbBulb,
@@ -17,8 +17,10 @@ import {
   TbPhoto,
   TbCalendar,
 } from "react-icons/tb";
-import Logo from "./logo";
+import Logo from "../../../components/logo";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 const Header = () => {
   const userOptions = [
@@ -47,6 +49,7 @@ const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
+  const { setTheme, theme } = useTheme();
 
   useEffect(() => {
     document.documentElement.addEventListener("click", (e) => {
@@ -94,7 +97,7 @@ const Header = () => {
 
   if (isMobile) {
     return (
-      <header className="flex items-center bg-white shadow py-4 px-8 border">
+      <header className="flex items-center bg-background shadow py-4 px-8 border">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <Button className="bg-transparent border">
@@ -126,42 +129,52 @@ const Header = () => {
   }
 
   return (
-    <header className="flex items-center justify-end bg-white shadow py-4 px-8 border">
+    <header className="flex items-center justify-end sticky inset-x-0 top-0 bg-background shadow py-4 px-8 border">
       <div className="hidden md:flex items-center justify-end gap-7">
-        <button className="bg-custom-gradient py-1 px-2 text-white rounded-md">
+        <button className="bg-custom-gradient py-1 px-2 text-foreground rounded-md">
           Create Video | v
         </button>
-        <p className="bg-gray-200 rounded-md text-white py-1 px-2">
+        <p className="bg-gray-200 rounded-md text-foreground py-1 px-2">
           💰 <span className="text-gradient bg-custom-gradient">300</span>
         </p>
-        <TbMoon className="size-5 cursor-pointer text-black/70" />
-        <TbBell className="size-5 cursor-pointer text-black/70" />
+        {theme == "dark" ? (
+          <TbSun
+            onClick={() => setTheme("light")}
+            className="size-5 cursor-pointer text-foreground/70"
+          />
+        ) : (
+          <TbMoon
+            onClick={() => setTheme("dark")}
+            className="size-5 cursor-pointer text-foreground/70"
+          />
+        )}
+        <TbBell className="size-5 cursor-pointer text-foreground/70" />
         <div className="relative">
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="bg-[#F3E1E1] h-9 w-9 rounded-full flex items-center justify-center cursor-pointer"
+            className="bg-[#F3E1E1] dark:bg-[#cb7878] h-9 w-9 rounded-full flex items-center justify-center cursor-pointer"
           >
             R
           </button>
           <div
             ref={dropdownRef}
             className={clsx(
-              "absolute top-12 right-0 w-56 bg-white shadow-lg rounded-md transition-all px-4 py-2",
+              "absolute top-12 right-0 w-56 bg-background shadow-lg rounded-md transition-all px-4 py-2",
               dropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
             )}
           >
             {userOptions.map((option, index) => (
               <div
                 key={index}
-                className="flex items-center gap-2 text-base cursor-pointer py-2 hover:bg-slate-200/70 transition-all rounded px-2"
+                className="flex items-center gap-2 text-base cursor-pointer py-2 hover:bg-slate-200/70 dark:hover:bg-gray-900 transition-all rounded px-2"
               >
-                <option.icon className="size-5 text-black/70" />
+                <option.icon className="size-5 text-foreground/70" />
                 <p>{option.title}</p>
               </div>
             ))}
-            <hr className="my-2 border-black border" />
-            <div className="flex items-center gap-2 text-base cursor-pointer py-2 hover:bg-slate-200/70 transition-all rounded px-2">
-              <TbLogout className="size-5 text-black/70" />
+            <hr className="my-2 border-foreground border" />
+            <div className="flex items-center gap-2 text-foreground cursor-pointer py-2 hover:bg-slate-200/70 dark:hover:bg-gray-900 transition-all rounded px-2">
+              <TbLogout className="size-5 text-foreground/70" />
               <p>Logout</p>
             </div>
           </div>

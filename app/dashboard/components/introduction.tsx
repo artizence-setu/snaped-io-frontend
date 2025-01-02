@@ -4,12 +4,12 @@ import { TbPlus } from "react-icons/tb";
 
 const Introduction = () => {
   return (
-    <div className="bg-white shadow w-full rounded-lg flex justify-between h-40">
+    <div className="bg-background shadow w-full rounded-lg flex justify-between h-40">
       <div className="flex-1 py-4 lg:py-8 pl-4">
-        <h3 className="text-lg font-extralight text-black/80">
+        <h3 className="text-lg font-extralight text-foreground/80">
           Introduction to our new Blog to Video
         </h3>
-        <p className="text-black/70 mt-2">
+        <p className="text-foreground/70 mt-2">
           Elevate your content with advanced faceless videos featuring immersive
           animations.
         </p>
@@ -18,7 +18,7 @@ const Introduction = () => {
             <TbPlus className="mr-2 size-5" />
             Try Now
           </Button>
-          <button className="shadow text-black/60 font-thin px-4 py-1 rounded-lg text-sm flex items-center hover:opacity-80 transition-all">
+          <button className="shadow text-foreground/60 font-thin px-4 py-1 rounded-lg text-sm flex items-center hover:opacity-80 transition-all">
             Dismiss
           </button>
         </div>
