@@ -112,10 +112,10 @@ const Header = () => {
                   <Link
                     key={index}
                     href={item.href}
-                    className="flex items-center px-4 py-2 text-lg w-full hover:bg-blue-100 transition-all group"
+                    className="flex items-center px-4 py-2 text-lg w-full hover:bg-blue-100 dark:hover:bg-gray-900 transition-all rounded-md group"
                   >
-                    <item.icon className="mr-3 size-6 text-black/70 hover:bg-custom-gradient bg-clip-text text-gradient" />
-                    <span className="text-black/70 bg-black/70 group-hover:bg-custom-gradient bg-clip-text textfil text-gradient transition-all">
+                    <item.icon className="mr-3 size-6 text-foreground/70 hover:bg-custom-gradient bg-clip-text text-gradient" />
+                    <span className="text-foreground/70 bg-foreground/70 group-hover:bg-custom-gradient bg-clip-text textfil text-gradient transition-all">
                       {item.name}
                     </span>
                   </Link>
