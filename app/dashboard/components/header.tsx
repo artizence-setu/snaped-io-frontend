@@ -131,7 +131,7 @@ const Header = () => {
   return (
     <header className="flex items-center justify-end sticky inset-x-0 top-0 bg-background shadow py-4 px-8 border">
       <div className="hidden md:flex items-center justify-end gap-7">
-        <button className="bg-custom-gradient py-1 px-2 text-foreground rounded-md">
+        <button className="bg-custom-gradient py-1 px-2 text-white rounded-md">
           Create Video | v
         </button>
         <p className="bg-gray-200 rounded-md text-foreground py-1 px-2">
