@@ -40,8 +40,8 @@ const SignInAuthForm = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
-      <div className="bg-background max-w-md w-full rounded-lg p-4 mt-16">
+    <div className="flex items-center justify-center row-span-9 pb-8">
+      <div className="bg-background max-w-md w-full rounded-lg p-4 shadow-lg">
         <h2 className="text-xl tracking-wide text-center">SignUp To Snaped</h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
