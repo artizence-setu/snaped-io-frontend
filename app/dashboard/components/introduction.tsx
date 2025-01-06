@@ -4,7 +4,7 @@ import { TbPlus } from "react-icons/tb";
 
 const Introduction = () => {
   return (
-    <div className="bg-background shadow w-full rounded-lg flex items-start justify-between lg:h-40">
+    <div className="bg-background shadow w-full rounded-lg flex items-start justify-between lg:h-40 border">
       <div className="flex-1 py-4 lg:py-8 px-4 lg:pl-4 lg:pr-0">
         <h3 className="text-lg font-extralight text-foreground/80">
           Introduction to our new Blog to Video
@@ -23,7 +23,7 @@ const Introduction = () => {
           </button>
         </div>
       </div>
-      <div className="lg:h-full hidden lg:block border">
+      <div className="lg:h-full hidden lg:block">
         <Image
           src="/frame.png"
           alt="Frame"

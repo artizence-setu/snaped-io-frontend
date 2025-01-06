@@ -53,6 +53,8 @@ const config: Config = {
       },
       backgroundImage: {
         "custom-gradient": "linear-gradient(135deg, #4E43FA, #9F62CA) ",
+        "custom-gradient2": "linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)",
+        // "linear-gradient(to bottom, #deecdd 0%, #c1dfc4 100%)"
       },
       screens: {
         lx: "1300px",

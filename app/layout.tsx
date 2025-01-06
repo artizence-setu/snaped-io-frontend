@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Inter, Rubik } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
+
+export const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+export const rubik = Rubik({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

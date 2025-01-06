@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <Link
       href="/"
-      className="text-2xl w-full text-foreground/70 flex items-center gap-2 px-5"
+      className="text-2xl text-foreground/70 flex items-center gap-2 px-5"
     >
       <Image
         src="/logo.svg"

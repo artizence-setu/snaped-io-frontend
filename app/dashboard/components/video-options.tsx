@@ -38,7 +38,7 @@ const VideoOptions = () => {
         {options.map((option, index) => (
           <div
             key={index}
-            className="bg-background shadow h-[410px] rounded-lg p-4 flex flex-col"
+            className="bg-background border shadow h-[410px] rounded-lg p-4 flex flex-col"
           >
             <h3 className="text-lg font-extralight text-center text-foreground/80">
               {option.title}

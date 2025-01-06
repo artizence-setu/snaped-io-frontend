@@ -28,7 +28,7 @@ const Tutorials = () => {
         {tutorials.map((tutorial, index) => (
           <div
             key={index}
-            className="flex flex-col gap-2 p-3 bg-background rounded-lg shadow"
+            className="flex flex-col gap-2 p-3 bg-background rounded-lg shadow border"
           >
             <Image
               src={tutorial.img}

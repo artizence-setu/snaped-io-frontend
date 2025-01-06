@@ -40,7 +40,7 @@ const Steps = () => {
       {steps.map((step, index) => (
         <div
           key={index}
-          className="bg-background shadow h-[240px] sm:h-[264px] lg:h-80 xl:h-[264px] flex flex-col rounded-lg p-4"
+          className="bg-background shadow h-[240px] sm:h-[264px] lg:h-80 xl:h-[264px] flex flex-col rounded-lg p-4 border"
         >
           <div className="flex w-full justify-between">
             <div className="p-2 bg-sky-200/30 rounded-lg">
