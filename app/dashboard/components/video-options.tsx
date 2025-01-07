@@ -1,6 +1,8 @@
 import { Button } from "@/components/button";
 import { TbArrowRight } from "react-icons/tb";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { interLight, interNormal } from "@/fonts/font";
 
 const VideoOptions = () => {
   const options = [
@@ -31,7 +33,12 @@ const VideoOptions = () => {
   ];
   return (
     <div>
-      <h2 className="font-extralight mb-2 text-lg text-foreground/80">
+      <h2
+        className={cn(
+          "font-extralight mb-2 text-lg text-foreground/80",
+          interNormal.className
+        )}
+      >
         Create Video With Options
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
@@ -40,7 +47,12 @@ const VideoOptions = () => {
             key={index}
             className="bg-background border shadow h-[410px] rounded-lg p-4 flex flex-col"
           >
-            <h3 className="text-lg font-extralight text-center text-foreground/80">
+            <h3
+              className={cn(
+                "text-lg font-extralight text-center text-foreground/80",
+                interNormal.className
+              )}
+            >
               {option.title}
             </h3>
             <div className="w-full overflow-hidden mt-2">
@@ -52,11 +64,16 @@ const VideoOptions = () => {
                 className="w-full object-cover"
               />
             </div>
-            <p className="mt-4 font-extralight text-foreground/50">
+            <p
+              className={cn(
+                "mt-4 font-extralight text-foreground/70",
+                interLight.className
+              )}
+            >
               {option.description}
             </p>
             <div className="flex justify-center mt-auto">
-              <Button className="py-2 mt-2">
+              <Button className={cn("py-2 mt-2", interLight.className)}>
                 Create Video
                 <TbArrowRight className="ml-1 size-5" />
               </Button>

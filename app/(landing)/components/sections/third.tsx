@@ -1,4 +1,4 @@
-import { inter, rubik } from "@/app/layout";
+import { interNormal, rubikMedium } from "@/fonts/font";
 import clsx from "clsx";
 import Image from "next/image";
 
@@ -18,7 +18,7 @@ const ThirdSection = () => {
         <h2
           className={clsx(
             "text-2xl lg:text-3xl font-bold tracking-wider text-foreground/80",
-            rubik.className
+            rubikMedium.className
           )}
         >
           Effortless Video Creation from Blogs
@@ -26,7 +26,7 @@ const ThirdSection = () => {
         <p
           className={clsx(
             "text-lg lg:text-xl text-secondary-foreground/80 tracking-wider leading-6 mt-4",
-            inter.className
+            interNormal.className
           )}
         >
           Creating videos from your blogs is now a breeze! Our intuitive

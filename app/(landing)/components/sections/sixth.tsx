@@ -1,7 +1,7 @@
-import { inter } from "@/app/layout";
-import { Button } from "@/components/button";
 import clsx from "clsx";
 import Image from "next/image";
+import { interBold } from "@/fonts/font";
+import { Button } from "@/components/button";
 
 const SixthSection = () => {
   const imagePart1 = [
@@ -46,7 +46,12 @@ const SixthSection = () => {
       </div>
       <div className="col-span-5 md:col-span-3 h-full flex flex-col items-center justify-center">
         <div className="max-w-xl flex flex-col items-center justify-center text-center">
-          <p className={clsx("text-lg md:text-2xl font-bold", inter.className)}>
+          <p
+            className={clsx(
+              "text-lg md:text-2xl font-bold",
+              interBold.className
+            )}
+          >
             See our AI in{" "}
             <span className="text-gradient bg-clip-text bg-custom-gradient">
               Action
@@ -55,7 +60,7 @@ const SixthSection = () => {
           <p
             className={clsx(
               "text-xl md:text-2xl lg:text-3xl font-bold mt-2 mx-2",
-              inter.className
+              interBold.className
             )}
           >
             Create{" "}

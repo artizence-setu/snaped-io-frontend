@@ -3,6 +3,8 @@ import { BsLightningCharge } from "react-icons/bs";
 import { HiOutlineVideoCamera } from "react-icons/hi";
 import { PiRocketBold } from "react-icons/pi";
 import { Button } from "@/components/button";
+import { cn } from "@/lib/utils";
+import { interLight, interNormal } from "@/fonts/font";
 
 const Steps = () => {
   const steps = [
@@ -49,12 +51,19 @@ const Steps = () => {
             <p className="text-black/70 text-sm">Step {index + 1}</p>
           </div>
           <div className="mt-6">
-            <h2 className="text-lg">{step.title}</h2>
-            <p className="text-secondary-foreground/70 text-sm leading-5 tracking-wider">
+            <h2 className={cn("text-lg", interNormal.className)}>
+              {step.title}
+            </h2>
+            <p
+              className={cn(
+                "text-secondary-foreground/80 text-sm leading-5 tracking-wider",
+                interLight.className
+              )}
+            >
               {step.description}
             </p>
           </div>
-          <div className="mt-auto">
+          <div className={cn("mt-auto", interLight.className)}>
             <Button>
               {step.button}
               <TbArrowRight className="ml-1 size-5" />

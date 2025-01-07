@@ -1,16 +1,6 @@
 import clsx from "clsx";
-import { Rubik } from "next/font/google";
 import Image from "next/image";
-
-const rubikMedium = Rubik({
-  subsets: ["latin"],
-  weight: "500",
-});
-
-const rubikLight = Rubik({
-  subsets: ["latin"],
-  weight: "400",
-});
+import { interLight, interNormal, rubikLight, rubikMedium } from "@/fonts/font";
 
 const SeventhSection = () => {
   const steps = [
@@ -51,7 +41,7 @@ const SeventhSection = () => {
       </h3>
       <p
         className={clsx(
-          "text-foreground/70 lg:w-2/4 text-base lg:text-lg mt-4 leading-6",
+          "text-foreground/90 lg:w-2/4 text-base lg:text-lg mt-4 leading-5",
           rubikLight.className
         )}
       >
@@ -79,8 +69,15 @@ const SeventhSection = () => {
                 <p className="text-black/70 text-sm">Step {index + 1}</p>
               </div>
               <div className="mt-6">
-                <h2 className="text-lg">{step.title}</h2>
-                <p className="text-secondary-foreground/70 text-sm leading-5 tracking-wider">
+                <h2 className={clsx("text-lg", interNormal.className)}>
+                  {step.title}
+                </h2>
+                <p
+                  className={clsx(
+                    "text-foreground/70 leading-5 tracking-wider",
+                    interLight.className
+                  )}
+                >
                   {step.description}
                 </p>
               </div>

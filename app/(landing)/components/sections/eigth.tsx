@@ -1,18 +1,8 @@
 "use client";
 import clsx from "clsx";
-import { Rubik } from "next/font/google";
 import React, { useState } from "react";
 import { SiTicktick } from "react-icons/si";
-
-const rubikLight = Rubik({
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const rubikMedium = Rubik({
-  subsets: ["latin"],
-  weight: "500",
-});
+import { rubikLight, rubikMedium, rubikNormal } from "@/fonts/font";
 
 const EigthSection = () => {
   const [isYearly, setIsYearly] = useState(true);
@@ -63,13 +53,19 @@ const EigthSection = () => {
       </h2>
       <p
         className={clsx(
-          "text-base lg:text-lg text-foreground/70 font-light mb-6"
+          "text-base lg:text-lg text-foreground/90 font-light mb-6",
+          rubikLight.className
         )}
       >
         Strikingly powerful, yet unbelievably affordable
       </p>
 
-      <div className="flex justify-center items-center bg-background relative mb-8 rounded-full text-sm lg:text-base">
+      <div
+        className={clsx(
+          "flex justify-center items-center bg-background relative mb-8 rounded-full text-sm lg:text-base",
+          rubikNormal.className
+        )}
+      >
         <button
           className={`px-4 py-2 ${
             isYearly
@@ -103,7 +99,7 @@ const EigthSection = () => {
             key={idx}
             className={clsx(
               "border rounded-xl px-4 py-4 bg-background shadow-lg",
-              rubikLight.className
+              rubikNormal.className
             )}
           >
             <h3 className="text-lg lg:text-xl mb-2 text-start text-foreground/50 font-light">
@@ -123,7 +119,7 @@ const EigthSection = () => {
             <hr className="border rounded-full mb-2" />
             <ul className="space-y-2 mb-4">
               {plan.features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-2">
+                <li key={i} className="flex items-center text-start gap-2">
                   <SiTicktick className="text-green-500 size-4" /> {feature}
                 </li>
               ))}

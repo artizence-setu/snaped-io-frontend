@@ -15,6 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/button";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { cn } from "@/lib/utils";
+import { interMedium, interNormal } from "@/fonts/font";
 
 const SignInAuthForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,8 +43,20 @@ const SignInAuthForm = () => {
 
   return (
     <div className="flex items-center justify-center row-span-9 pb-8">
-      <div className="bg-background max-w-md w-full rounded-lg p-4 shadow-lg">
-        <h2 className="text-xl tracking-wide text-center">SignUp To Snaped</h2>
+      <div
+        className={cn(
+          "bg-background max-w-md w-full rounded-lg p-4 shadow-lg",
+          interNormal.className
+        )}
+      >
+        <h2
+          className={cn(
+            "text-xl tracking-wide text-center",
+            interMedium.className
+          )}
+        >
+          SignUp To Snaped
+        </h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField

@@ -4,6 +4,9 @@ import Logo from "@/components/logo";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import clsx from "clsx";
+import { interMedium, interNormal } from "@/fonts/font";
+import Link from "next/link";
 
 const LandingPageHeader = () => {
   const menuOptions = [
@@ -22,17 +25,27 @@ const LandingPageHeader = () => {
         {menuOptions.map((option) => (
           <p
             key={option}
-            className="text-sm font-medium hover:text-blue-600 cursor-pointer transition-colors"
+            className={clsx(
+              "text-sm font-medium hover:text-blue-600 cursor-pointer transition-colors",
+              interNormal.className
+            )}
           >
             {option}
           </p>
         ))}
       </div>
       <div className="hidden md:flex items-center gap-4">
-        <button className="px-4 py-2 rounded-lg text-sm bg-transparent border hover:opacity-60 transition-all">
-          Login
+        <button
+          className={clsx(
+            "px-4 py-2 rounded-lg text-sm bg-transparent border hover:opacity-60 transition-all",
+            interNormal.className
+          )}
+        >
+          <Link href="/sign-in">Login</Link>,
         </button>
-        <Button className="py-2">Signup</Button>
+        <Button className={clsx("py-2", interMedium.className)}>
+          <Link href="/sign-up">Signup</Link>
+        </Button>
       </div>
       {/* Mobile Menu */}
       <div className="md:hidden">
@@ -57,9 +70,11 @@ const LandingPageHeader = () => {
               </nav>
               <div className="flex flex-col gap-4 mt-8">
                 <button className="px-4 py-2 rounded-lg text-sm bg-transparent border hover:opacity-60 transition-all">
-                  Login
+                  <Link href="/sign-in">Login</Link>
                 </button>
-                <Button className="py-2 w-full">Signup</Button>
+                <Button className="py-2 w-full">
+                  <Link href="/sign-up">Signup</Link>
+                </Button>
               </div>
             </div>
           </SheetContent>

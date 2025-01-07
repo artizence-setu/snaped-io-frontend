@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Logo from "../../../components/logo";
 import {
@@ -8,8 +9,12 @@ import {
   TbPhoto,
   TbCalendar,
 } from "react-icons/tb";
+import clsx from "clsx";
+import { interNormal } from "@/fonts/font";
+import { usePathname } from "next/navigation";
 
 const SideNavbar = () => {
+  const pathname = usePathname();
   const navlinks = [
     {
       href: "/dashboard",
@@ -50,10 +55,20 @@ const SideNavbar = () => {
           <Link
             key={index}
             href={item.href}
-            className="flex items-center px-4 py-2 text-lg w-full hover:bg-blue-100 transition-all group dark:hover:bg-gray-900"
+            className={clsx(
+              "flex items-center px-4 py-2 text-lg w-full hover:bg-blue-100 transition-all group dark:hover:bg-gray-900",
+              interNormal.className,
+              pathname === item.href && "bg-blue-100 dark:bg-gray-900"
+            )}
           >
             <item.icon className="mr-3 size-6 text-foreground/70 hover:bg-custom-gradient bg-clip-text text-gradient" />
-            <span className="text-foreground/70 bg-foreground/70 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all">
+            <span
+              className={clsx(
+                "text-foreground/70 bg-foreground/70 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all",
+                pathname === item.href &&
+                  "bg-custom-gradient bg-clip-text text-gradient"
+              )}
+            >
               {item.name}
             </span>
           </Link>

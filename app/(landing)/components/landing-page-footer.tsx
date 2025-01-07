@@ -1,19 +1,8 @@
-// LandingPageFooter.js
 import clsx from "clsx";
-import { Rubik } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
-const rubikLight = Rubik({
-  subsets: ["latin"],
-  weight: "300",
-});
-
-const rubikMedium = Rubik({
-  subsets: ["latin"],
-  weight: "400",
-});
+import { rubikLight, rubikNormal } from "@/fonts/font";
 
 const LandingPageFooter = () => {
   const productLinks = [
@@ -61,7 +50,7 @@ const LandingPageFooter = () => {
                 className="h-full"
               />
             </div>
-            <h3 className={clsx("text-2xl", rubikMedium.className)}>Snaped</h3>
+            <h3 className={clsx("text-2xl", rubikNormal.className)}>Snaped</h3>
           </div>
           <p className="mt-4 text-lg">
             Snaped is your AI-powered video creation tool, transforming text and
@@ -71,21 +60,53 @@ const LandingPageFooter = () => {
         </div>
         <div className="flex flex-wrap justify-between flex-1 lg:justify-start gap-x-28 sm:gap-x-20 xl:gap-x-24 gap-y-8 mt-2">
           <div>
-            <p className="text-lg font-semibold mb-2">Product</p>
-            <ul className="space-y-2">{renderLinks(productLinks)}</ul>
+            <p
+              className={clsx(
+                "text-lg font-semibold mb-2",
+                rubikNormal.className
+              )}
+            >
+              Product
+            </p>
+            <ul className={clsx("space-y-2", rubikLight.className)}>
+              {renderLinks(productLinks)}
+            </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-2">Resources</h3>
-            <ul className="space-y-2">{renderLinks(resourceLinks)}</ul>
+            <h3
+              className={clsx(
+                "text-lg font-semibold mb-2",
+                rubikNormal.className
+              )}
+            >
+              Resources
+            </h3>
+            <ul className={clsx("space-y-2", rubikLight.className)}>
+              {renderLinks(resourceLinks)}
+            </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-2">Social</h3>
-            <ul className="space-y-2">{renderLinks(socialLinks)}</ul>
+            <h3
+              className={clsx(
+                "text-lg font-semibold mb-2",
+                rubikNormal.className
+              )}
+            >
+              Social
+            </h3>
+            <ul className={clsx("space-y-2", rubikLight.className)}>
+              {renderLinks(socialLinks)}
+            </ul>
           </div>
         </div>
       </div>
       <div className="bg-white/20 py-5">
-        <p className="text-center text-base tracking-wider">
+        <p
+          className={clsx(
+            "text-center text-base tracking-wider",
+            rubikLight.className
+          )}
+        >
           © 2024 Snaped. All rights reserved.
         </p>
       </div>

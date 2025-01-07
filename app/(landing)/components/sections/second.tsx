@@ -1,4 +1,4 @@
-import { inter, rubik } from "@/app/layout";
+import { interNormal, rubikMedium } from "@/fonts/font";
 import clsx from "clsx";
 import Image from "next/image";
 
@@ -8,8 +8,8 @@ const SecondSection = () => {
       <div className="w-full md:w-2/4 pt-6">
         <h2
           className={clsx(
-            "text-2xl lg:text-3xl tracking-wider font-bold text-foreground/80",
-            rubik.className
+            "text-2xl lg:text-3xl tracking-wider font-bold text-black/80",
+            rubikMedium.className
           )}
         >
           Turn Your Text into Engaging Faceless Video
@@ -17,7 +17,7 @@ const SecondSection = () => {
         <p
           className={clsx(
             "text-lg lg:text-xl text-secondary-foreground/80 tracking-wider leading-6 mt-4",
-            inter.className
+            interNormal.className
           )}
         >
           Transform your written content into dynamic, engaging videos in just a

@@ -17,6 +17,8 @@ import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/button";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { cn } from "@/lib/utils";
+import { interMedium, interNormal } from "@/fonts/font";
 
 const SignUpAuthForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -48,8 +50,20 @@ const SignUpAuthForm = () => {
 
   return (
     <div className="flex items-center justify-center row-span-9 pb-8">
-      <div className="bg-background max-w-md w-full rounded-lg p-4 mt-16 shadow-lg">
-        <h2 className="text-xl tracking-wide text-center">Signup To Snaped</h2>
+      <div
+        className={cn(
+          "bg-background max-w-md w-full rounded-lg p-4 mt-16 shadow-lg",
+          interNormal.className
+        )}
+      >
+        <h2
+          className={cn(
+            "text-xl tracking-wide text-center",
+            interMedium.className
+          )}
+        >
+          Signup To Snaped
+        </h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -136,7 +150,12 @@ const SignUpAuthForm = () => {
                           className="data-[state=checked]:bg-[#4E43FA]"
                         />
                       </FormControl>
-                      <p className="text-sm text-foreground/60">
+                      <p
+                        className={cn(
+                          "text-sm text-foreground/60",
+                          interNormal.className
+                        )}
+                      >
                         Yes, I want to receive notification regarding offers,
                         newsletters and more.
                       </p>
@@ -145,7 +164,7 @@ const SignUpAuthForm = () => {
                   </FormItem>
                 )}
               />
-              <p className="text-sm mt-2">
+              <p className={cn("text-sm mt-2", interNormal.className)}>
                 By continuing you agree to Our{" "}
                 <span className="text-[#4E43FA]">Terms of Service</span> and{" "}
                 <span className="text-[#4E43FA]">Privacy Policy</span>

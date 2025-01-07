@@ -1,3 +1,5 @@
+import { interNormal } from "@/fonts/font";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const Tutorials = () => {
@@ -20,7 +22,7 @@ const Tutorials = () => {
     },
   ];
   return (
-    <div>
+    <div className={cn(interNormal.className)}>
       <h2 className="font-extralight mb-2 text-lg text-foreground/80">
         Tutorials
       </h2>

@@ -1,17 +1,12 @@
 "use client";
 import clsx from "clsx";
-import { Rubik } from "next/font/google";
 import React, { useState } from "react";
-
-const rubikLight = Rubik({
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const rubikMedium = Rubik({
-  subsets: ["latin"],
-  weight: "500",
-});
+import {
+  interNormal,
+  rubikLight,
+  rubikMedium,
+  rubikNormal,
+} from "@/fonts/font";
 
 const NinthSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -76,9 +71,10 @@ const NinthSection = () => {
             >
               <button
                 className={clsx(
-                  "w-full text-left text-base lg:text-lg font-medium text-foreground hover:bg-purple-50 focus:outline-none flex justify-between items-center p-4 transition",
+                  "w-full text-left text-base lg:text-lg font-medium text-foreground/80 hover:bg-purple-50 focus:outline-none flex justify-between items-center p-4 transition",
                   openIndex === index &&
-                    "text-gradient bg-custom-gradient bg-clip-text pb-0"
+                    "text-gradient bg-custom-gradient bg-clip-text pb-0",
+                  rubikNormal.className
                 )}
                 onClick={() => toggleFAQ(index)}
               >
@@ -95,7 +91,12 @@ const NinthSection = () => {
                     : "max-h-0 opacity-0"
                 )}
               >
-                <div className="p-4 bg-background text-sm lg:text-base text-foreground">
+                <div
+                  className={clsx(
+                    "p-4 bg-background text-sm lg:text-base text-foreground",
+                    interNormal.className
+                  )}
+                >
                   {faq.answer}
                 </div>
               </div>
@@ -122,9 +123,10 @@ const NinthSection = () => {
               >
                 <button
                   className={clsx(
-                    "w-full text-left text-base lg:text-lg font-medium text-foreground hover:bg-purple-50 focus:outline-none flex justify-between items-center p-4 transition",
+                    "w-full text-left text-base lg:text-lg font-medium text-foreground/80 hover:bg-purple-50 focus:outline-none flex justify-between items-center p-4 transition",
                     openIndex === index &&
-                      "text-gradient bg-custom-gradient bg-clip-text pb-0"
+                      "text-gradient bg-custom-gradient bg-clip-text pb-0",
+                    rubikNormal.className
                   )}
                   onClick={() => toggleFAQ(index)}
                 >
@@ -141,7 +143,12 @@ const NinthSection = () => {
                       : "max-h-0 opacity-0"
                   )}
                 >
-                  <div className="p-4 bg-background text-foreground text-sm lg:text-base">
+                  <div
+                    className={clsx(
+                      "p-4 bg-background text-foreground text-sm lg:text-base",
+                      interNormal.className
+                    )}
+                  >
                     {faq.answer}
                   </div>
                 </div>

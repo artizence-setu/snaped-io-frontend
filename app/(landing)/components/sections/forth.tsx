@@ -1,5 +1,5 @@
-import { inter, rubik } from "@/app/layout";
 import clsx from "clsx";
+import { interNormal, rubikMedium } from "@/fonts/font";
 import Image from "next/image";
 
 const ForthSection = () => {
@@ -9,7 +9,7 @@ const ForthSection = () => {
         <h2
           className={clsx(
             "text-2xl lg:text-3xl tracking-wider font-bold text-foreground/80",
-            rubik.className
+            rubikMedium.className
           )}
         >
           No One to Record? Let Our AI Characters Do It for You!
@@ -17,7 +17,7 @@ const ForthSection = () => {
         <p
           className={clsx(
             "text-lg lg:text-xl text-secondary-foreground/80 tracking-wider leading-6 mt-4",
-            inter.className
+            interNormal.className
           )}
         >
           Forget the hassle of finding someone to record your videos. With our
