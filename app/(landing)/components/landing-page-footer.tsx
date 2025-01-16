@@ -21,7 +21,8 @@ const LandingPageFooter = () => {
   const socialLinks = [
     { label: "LinkedIn", href: "#" },
     { label: "Instagram", href: "#" },
-    { label: "X (Telegram)", href: "#" },
+    { label: "X (Twitter)", href: "#" },
+    { label: "Telegram", href: "#" },
   ];
 
   const renderLinks = (links: typeof productLinks) => {
