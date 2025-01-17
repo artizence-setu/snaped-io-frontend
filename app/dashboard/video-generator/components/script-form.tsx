@@ -53,7 +53,10 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
 
   return (
     <div className="bg-background rounded-lg p-4 border shadow flex flex-col">
-      <h2 className={cn("mb-4", rubikNormal.className)}>Write Your Script</h2>
+      <div className={cn(rubikNormal.className, "mb-6")}>
+        <p>Image to Video</p>
+        <div className="h-[3px] w-[5.5rem] bg-custom-gradient rounded-lg"></div>
+      </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
@@ -68,7 +71,7 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
                     rows={10}
                     className={cn(
                       interNormal.className,
-                      "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600"
+                      "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 bg-primary"
                     )}
                     placeholder="Write your script here"
                   />

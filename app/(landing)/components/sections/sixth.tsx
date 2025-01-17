@@ -17,7 +17,7 @@ const SixthSection = () => {
   ];
 
   return (
-    <div className="grid grid-cols-5 items-center bg-custom-gradient2 w-full px-4 py-6 md:py-0 sm:px-6 md:px-8 lg:px-20 overflow-hidden">
+    <div className="grid grid-cols-5 items-center bg-primary w-full px-4 py-6 md:py-0 sm:px-6 md:px-8 lg:px-20 overflow-hidden">
       <div className="hidden md:col-span-1 h-full md:grid grid-cols-2 gap-6 overflow-hidden">
         <div className="space-y-4 h-full">
           {imagePart1.map((image, index) => (
@@ -45,7 +45,7 @@ const SixthSection = () => {
         </div>
       </div>
       <div className="col-span-5 md:col-span-3 h-full flex flex-col items-center justify-center">
-        <div className="max-w-xl flex flex-col items-center justify-center text-center">
+        <div className="max-w-xl flex flex-col items-center justify-center text-center text-foreground/80">
           <p
             className={clsx(
               "text-lg md:text-2xl font-bold",

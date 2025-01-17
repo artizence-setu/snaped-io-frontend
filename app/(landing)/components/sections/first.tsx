@@ -1,6 +1,8 @@
 "use client";
 import { Button } from "@/components/button";
-import { interNormal, rubikMedium } from "@/fonts/font";
+import WordRotate from "@/components/ui/word-rotate";
+import { interMedium, interNormal, rubikMedium } from "@/fonts/font";
+import { cn } from "@/lib/utils";
 import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -23,14 +25,15 @@ const FirstSection = () => {
       <div className="py-4 md:w-[50%]">
         <h1
           className={clsx(
-            "text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#1c2946] font-semibold leading-tight",
+            "text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#1c2946] dark:text-gray-300/90 font-semibold leading-tight",
             rubikMedium.className
           )}
         >
           Generate Faceless Videos from any Idea for{" "}
-          <span className="bg-custom-gradient bg-clip-text text-gradient">
-            Youtubers
-          </span>
+          <WordRotate
+            words={["Youtubers", "Content Creaters", "Digital Marketers"]}
+            className="bg-custom-gradient bg-clip-text text-gradient leading-tight"
+          />
         </h1>
         <p
           className={clsx(
@@ -44,7 +47,9 @@ const FirstSection = () => {
           marketers, influencers, or creators—video production has never been
           easier!
         </p>
-        <Button className="mt-4 text-lg lg:text-xl">
+        <Button
+          className={cn(interMedium.className, "mt-4 text-lg lg:text-lg")}
+        >
           Start Your Free Trial
         </Button>
       </div>

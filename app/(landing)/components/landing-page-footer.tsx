@@ -37,7 +37,10 @@ const LandingPageFooter = () => {
 
   return (
     <footer
-      className={clsx("bg-custom-gradient text-white", rubikLight.className)}
+      className={clsx(
+        "bg-custom-gradient bg-opacity-80 text-white",
+        rubikLight.className
+      )}
     >
       <div className="flex flex-wrap gap-x-8 gap-y-8 sm:gap-x-12 md:gap-x-16 lg:gap-x-20 xl:gap-x-28 py-10 px-4 sm:px-6 md:px-8 lg:px-20">
         <div className="w-full md:w-72">

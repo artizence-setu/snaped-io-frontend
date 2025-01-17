@@ -38,12 +38,11 @@ const VideoGeneratorForm = () => {
         defaultValues={scriptDefaultValue}
         onScriptSubmit={handleScriptSubmit}
       />
-      {
-        <VideoOptionsForm
-          defaultValues={videoOptionsDefaultValues}
-          onVideoOptionSubmit={onVideoOptionSubmit}
-        />
-      }
+
+      <VideoOptionsForm
+        defaultValues={videoOptionsDefaultValues}
+        onVideoOptionSubmit={onVideoOptionSubmit}
+      />
     </div>
   );
 };

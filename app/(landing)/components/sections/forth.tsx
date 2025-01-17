@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const ForthSection = () => {
   return (
-    <div className="flex flex-col md:flex-row w-full gap-8 px-4 sm:px-6 md:px-8 lg:px-20 py-12 lg:py-20 bg-custom-gradient2">
+    <div className="flex flex-col md:flex-row w-full gap-8 px-4 sm:px-6 md:px-8 lg:px-20 py-12 lg:py-20 bg-primary">
       <div className="w-full md:w-2/4 pt-6">
         <h2
           className={clsx(

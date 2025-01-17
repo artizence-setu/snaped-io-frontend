@@ -8,25 +8,25 @@ const SeventhSection = () => {
       title: "Explore Ideas",
       description:
         "Find inspiration effortlessly by browsing trending topics and themes tailored to your creative goals and audience.",
-      icon: "/bulb.svg",
+      icon: "/icons/bulb.svg",
     },
     {
       title: "Generate Videos",
       description:
         "Turn your ideas into professional-quality faceless videos in minutes with our powerful Al-driven tools.",
-      icon: "/flash.svg",
+      icon: "/icons/flash.svg",
     },
     {
       title: "Edit Videos",
       description:
         "Fine-tune your videos by adjusting visuals, captions, and voiceovers to create content that stands out.",
-      icon: "/video.svg",
+      icon: "/icons/video.svg",
     },
     {
       title: "Publish",
       description:
         "Seamlessly schedule and share your videos across multiple platforms to reach your audience at the perfect time.",
-      icon: "/rocket.svg",
+      icon: "/icons/rocket.svg",
     },
   ];
   return (
@@ -57,7 +57,7 @@ const SeventhSection = () => {
               className="bg-background shadow-lg flex flex-col rounded-lg p-4 border"
             >
               <div className="flex w-full justify-between">
-                <div className="p-2 bg-[#E1DFFF] h-12 w-12 rounded-lg grid items-center overflow-hidden">
+                <div className="p-2 bg-primary h-12 w-12 rounded-lg grid items-center overflow-hidden">
                   <Image
                     src={step.icon}
                     alt={step.title}

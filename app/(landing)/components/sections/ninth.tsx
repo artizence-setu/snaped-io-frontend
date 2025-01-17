@@ -67,11 +67,11 @@ const NinthSection = () => {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border border-gray-300 rounded-lg overflow-hidden w-full"
+              className="border border-purple-500 rounded-lg overflow-hidden w-full"
             >
               <button
                 className={clsx(
-                  "w-full text-left text-base lg:text-lg font-medium text-foreground/80 hover:bg-purple-50 focus:outline-none flex justify-between items-center p-4 transition",
+                  "w-full text-left text-base lg:text-lg font-medium text-foreground/80 hover:bg-primary focus:outline-none flex justify-between items-center p-4 transition",
                   openIndex === index &&
                     "text-gradient bg-custom-gradient bg-clip-text pb-0",
                   rubikNormal.className
@@ -119,11 +119,11 @@ const NinthSection = () => {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="border border-gray-300 rounded-lg overflow-hidden w-full"
+                className="border border-purple-500 rounded-lg overflow-hidden w-full"
               >
                 <button
                   className={clsx(
-                    "w-full text-left text-base lg:text-lg font-medium text-foreground/80 hover:bg-purple-50 focus:outline-none flex justify-between items-center p-4 transition",
+                    "w-full text-left text-base lg:text-lg font-medium text-foreground/80 hover:bg-primary focus:outline-none flex justify-between items-center p-4 transition",
                     openIndex === index &&
                       "text-gradient bg-custom-gradient bg-clip-text pb-0",
                     rubikNormal.className
