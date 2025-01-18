@@ -10,7 +10,7 @@ interface EditScheduleSheetStateType {
 export const EditScheduleSheetState = create<EditScheduleSheetStateType>(
   (set) => ({
     id: undefined,
-    open: true,
+    open: false,
     onOpen: (id) => set({ open: true, id }),
     onClose: () => set({ open: false, id: undefined }),
   })
