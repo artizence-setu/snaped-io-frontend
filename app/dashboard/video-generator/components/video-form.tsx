@@ -8,6 +8,9 @@ const VideoGeneratorForm = () => {
     prompt: "",
   };
 
+  /* 
+    Script Submission Function, here we can implement api for script submission and get the response from the api
+  */
   const handleScriptSubmit = (data: typeof scriptDefaultValue) => {
     console.log(data);
   };
@@ -28,6 +31,9 @@ const VideoGeneratorForm = () => {
     folder: "",
   };
 
+  /*
+    Video Options Submission Function, here we can implement api for video options submission and get the response from the api
+  */
   const onVideoOptionSubmit = (data: typeof videoOptionsDefaultValues) => {
     console.log(data);
   };
