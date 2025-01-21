@@ -42,7 +42,7 @@ const EigthSection = () => {
     },
   ];
   return (
-    <div className="bg-custom-gradient2 px-4 sm:px-6 md:px-8 lg:px-20 py-20 text-center flex flex-col items-center justify-center w-full">
+    <div className="bg-primary px-4 sm:px-6 md:px-8 lg:px-20 py-20 text-center flex flex-col items-center justify-center w-full">
       <h2
         className={clsx(
           "text-2xl lg:text-3xl font-bold text-gradient bg-custom-gradient bg-clip-text mb-2",

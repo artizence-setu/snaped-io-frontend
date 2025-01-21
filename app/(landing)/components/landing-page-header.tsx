@@ -41,7 +41,7 @@ const LandingPageHeader = () => {
             interNormal.className
           )}
         >
-          <Link href="/sign-in">Login</Link>,
+          <Link href="/sign-in">Login</Link>
         </button>
         <Button className={clsx("py-2", interMedium.className)}>
           <Link href="/sign-up">Signup</Link>

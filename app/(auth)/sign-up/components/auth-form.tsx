@@ -43,6 +43,7 @@ const SignUpAuthForm = () => {
     resolver: zodResolver(formSchema),
   });
 
+  // Submit function of Sign-Up, here we can implement api for sign-up
   const onSubmit = (data: FormType) => {
     console.log(data);
     setIsLoading(true);

@@ -36,6 +36,7 @@ const SignInAuthForm = () => {
     resolver: zodResolver(formSchema),
   });
 
+  // Submit function of login, here we can implement api for login
   const onSubmit = (data: FormType) => {
     console.log(data);
     setIsLoading(true);

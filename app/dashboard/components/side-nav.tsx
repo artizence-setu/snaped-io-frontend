@@ -22,27 +22,27 @@ const SideNavbar = () => {
       icon: TbLayoutDashboard,
     },
     {
-      href: "ideas",
+      href: "/dashboard/ideas",
       name: "Explore Ideas",
       icon: TbBulb,
     },
     {
-      href: "editor",
+      href: "/dashboard/editor",
       name: "Video Editor",
       icon: TbVideoPlus,
     },
     {
-      href: "/publish",
+      href: "/dashboard/publish",
       name: "Publish",
       icon: TbUpload,
     },
     {
-      href: "/myvideos",
+      href: "/dashboard/myvideos",
       name: "My Videos",
       icon: TbPhoto,
     },
     {
-      href: "/calender",
+      href: "/dashboard/calender",
       name: "Calender",
       icon: TbCalendar,
     },

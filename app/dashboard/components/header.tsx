@@ -1,14 +1,15 @@
 "use client";
 import clsx from "clsx";
-import { TbMoon, TbBell, TbLogout, TbSun } from "react-icons/tb";
+import { TbBell, TbLogout } from "react-icons/tb";
 import { CgProfile, CgSupport } from "react-icons/cg";
 import { RiExchangeDollarLine } from "react-icons/ri";
 import { IoSettingsOutline } from "react-icons/io5";
+import { FaAngleDown } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { useMedia } from "react-use";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/button";
-import { Menu, Moon } from "lucide-react";
+import { Menu } from "lucide-react";
 import {
   TbLayoutDashboard,
   TbBulb,
@@ -20,9 +21,9 @@ import {
 import Logo from "../../../components/logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
-import { interMedium, interNormal, rubikNormal } from "@/fonts/font";
+import { interNormal, rubikNormal } from "@/fonts/font";
+import ThemeButton from "@/components/theme-button";
 
 const Header = () => {
   const pathname = usePathname();
@@ -52,7 +53,6 @@ const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
-  const { setTheme, theme } = useTheme();
 
   useEffect(() => {
     document.documentElement.addEventListener("click", (e) => {
@@ -146,31 +146,23 @@ const Header = () => {
       <div className="hidden md:flex items-center justify-end gap-7">
         <button
           className={cn(
-            "bg-custom-gradient py-1 px-2 text-white rounded-md",
-            interMedium.className
+            "bg-custom-gradient py-1 px-4 text-white rounded-md flex items-center gap-2 hover:opacity-80 transition",
+            interNormal.className
           )}
         >
-          Create Video | v
+          <p>Create Video</p>
+          <p>|</p>
+          <FaAngleDown />
         </button>
         <p
           className={cn(
-            "bg-gray-200 rounded-md text-foreground py-1 px-2",
+            "bg-primary rounded-md text-foreground py-1 px-2",
             interNormal.className
           )}
         >
           💰 <span className="text-gradient bg-custom-gradient">300</span>
         </p>
-        {theme == "dark" ? (
-          <TbSun
-            onClick={() => setTheme("light")}
-            className="size-5 cursor-pointer text-foreground/70"
-          />
-        ) : (
-          <TbMoon
-            onClick={() => setTheme("dark")}
-            className="size-5 cursor-pointer text-foreground/70"
-          />
-        )}
+        <ThemeButton />
         <TbBell className="size-5 cursor-pointer text-foreground/70" />
         <div className="relative">
           <button
@@ -193,7 +185,7 @@ const Header = () => {
               <div
                 key={index}
                 className={cn(
-                  "flex items-center gap-2 text-base cursor-pointer py-2 hover:bg-slate-200/70 dark:hover:bg-gray-900 transition-all rounded px-2",
+                  "flex items-center gap-2 text-base cursor-pointer py-2 hover:bg-primary transition-all rounded px-2",
                   interNormal.className
                 )}
               >
@@ -202,7 +194,7 @@ const Header = () => {
               </div>
             ))}
             <hr className="my-2 border-foreground border" />
-            <div className="flex items-center gap-2 text-foreground cursor-pointer py-2 hover:bg-slate-200/70 dark:hover:bg-gray-900 transition-all rounded px-2">
+            <div className="flex items-center gap-2 text-foreground cursor-pointer py-2 hover:bg-primary transition-all rounded px-2">
               <TbLogout className="size-5 text-foreground/70" />
               <p>Logout</p>
             </div>

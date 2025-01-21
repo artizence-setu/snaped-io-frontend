@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
+import SheetProvider from "@/providers/sheet-providers";
 
 export const metadata: Metadata = {
   title: "Snaped IO",
@@ -22,6 +22,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <SheetProvider />
           {children}
         </ThemeProvider>
       </body>

@@ -5,6 +5,7 @@ import { PiRocketBold } from "react-icons/pi";
 import { Button } from "@/components/button";
 import { cn } from "@/lib/utils";
 import { interLight, interNormal } from "@/fonts/font";
+import Image from "next/image";
 
 const Steps = () => {
   const steps = [
@@ -12,28 +13,28 @@ const Steps = () => {
       title: "Explore Ideas",
       description:
         "Find inspiration effortlessly by browsing trending topics and themes tailored to your creative goals and audience.",
-      icon: TbBulb,
+      icon: "/icons/bulb.svg",
       button: "Explore",
     },
     {
       title: "Generate Videos",
       description:
         "Turn your ideas into professional-quality faceless videos in minutes with our powerful Al-driven tools.",
-      icon: BsLightningCharge,
+      icon: "/icons/flash.svg",
       button: "Generate",
     },
     {
       title: "Edit Videos",
       description:
         "Fine-tune your videos by adjusting visuals, captions, and voiceovers to create content that stands out.",
-      icon: HiOutlineVideoCamera,
+      icon: "/icons/video.svg",
       button: "Edit",
     },
     {
       title: "Publish",
       description:
         "Seamlessly schedule and share your videos across multiple platforms to reach your audience at the perfect time.",
-      icon: PiRocketBold,
+      icon: "/icons/rocket.svg",
       button: "Publish",
     },
   ];
@@ -45,8 +46,14 @@ const Steps = () => {
           className="bg-background shadow h-[240px] sm:h-[264px] lg:h-80 xl:h-[264px] flex flex-col rounded-lg p-4 border"
         >
           <div className="flex w-full justify-between">
-            <div className="p-2 bg-sky-200/30 rounded-lg">
-              <step.icon className="size-8 text-sky-600" />
+            <div className="p-2 bg-primary rounded-lg">
+              <Image
+                src={step.icon}
+                alt="icon"
+                width={24}
+                height={24}
+                className="size-8"
+              />
             </div>
             <p className="text-black/70 text-sm">Step {index + 1}</p>
           </div>
