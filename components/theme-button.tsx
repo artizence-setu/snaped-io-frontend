@@ -23,7 +23,11 @@ const ThemeButton = () => {
       aria-label="Toggle Theme"
     >
       <span className="sr-only">Toggle theme</span>
-      {theme === "dark" ? <TbSun /> : <TbMoon />}
+      {theme === "dark" ? (
+        <TbSun className="size-[18px]" />
+      ) : (
+        <TbMoon className="size-[18px]" />
+      )}
     </button>
   );
 };

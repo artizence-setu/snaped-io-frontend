@@ -21,7 +21,7 @@ const EditScheduleForm = () => {
     date: new Date(),
     scheduler: "",
     post_type: "",
-    account: "",
+    account: [],
   };
 
   const onCancel = () => {};
