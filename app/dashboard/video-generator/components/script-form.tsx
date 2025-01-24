@@ -24,7 +24,7 @@ import { Button as ShadcnBtn } from "@/components/ui/button";
 
 const formSchema = z.object({
   script: z.string().min(1, "Script is required"),
-  prompt: z.string().min(10, "Prompt is required"),
+  prompt: z.string().min(10, "Minimum 10 characters are required"),
 });
 
 type FormType = z.infer<typeof formSchema>;
@@ -74,6 +74,11 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
                       "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 bg-primary"
                     )}
                     placeholder="Write your script here"
+                    disabled={form.formState.isSubmitting}
+                    value={field.value}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                    }}
                   />
                 </FormControl>
                 <FormMessage />
@@ -96,7 +101,7 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
                         rows={5}
                         className={cn(
                           interNormal.className,
-                          "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600"
+                          "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 bg-primary"
                         )}
                         placeholder="Write your prompt here"
                       />

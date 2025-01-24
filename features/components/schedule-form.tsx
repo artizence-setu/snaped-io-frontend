@@ -29,6 +29,7 @@ import {
   SelectContent,
   SelectValue,
 } from "@/components/ui/select";
+import { MultiSelect } from "@/components/ui/multi-select";
 
 const formSchema = z.object({
   id: z
@@ -40,7 +41,7 @@ const formSchema = z.object({
   }),
   scheduler: z.string().min(1, "Scheduler is required"),
   post_type: z.string().min(1, "Post type is required"),
-  account: z.string().min(1, "Account is required"),
+  account: z.string().array().min(1, "Atleast One Account is required"),
 });
 
 type FormType = z.infer<typeof formSchema>;
@@ -62,7 +63,7 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ({
       date: new Date(),
       scheduler: "",
       post_type: "",
-      account: "",
+      account: [],
     },
     resolver: zodResolver(formSchema),
   });
@@ -201,22 +202,12 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ({
               <FormItem>
                 <FormLabel>Account</FormLabel>
                 <FormControl>
-                  <Select
+                  <MultiSelect
+                    onValueChange={(values) => field.onChange(values)}
                     defaultValue={field.value}
+                    options={accountOptions}
                     disabled={isLoading}
-                    onValueChange={(value) => field.onChange(value)}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select an account" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {accountOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

@@ -4,6 +4,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { Schedule } from "@/types/types";
 import { format } from "date-fns";
+import { cn } from "@/lib/utils";
+import { interMedium, interNormal } from "@/fonts/font";
 
 export const columns: ColumnDef<Schedule>[] = [
   {
@@ -34,6 +36,7 @@ export const columns: ColumnDef<Schedule>[] = [
       return (
         <Button
           variant="ghost"
+          className={cn(interMedium.className)}
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Date
@@ -42,9 +45,12 @@ export const columns: ColumnDef<Schedule>[] = [
       );
     },
     cell: ({ row }) => {
-      const date = row.getValue("date");
-      //@ts-ignore
-      return <p>{format(date, "dd MMMM, yyyy")}</p>;
+      const date = row.getValue("date") as Date;
+      return (
+        <p className={cn(interNormal.className)}>
+          {format(date, "dd MMMM, yyyy")}
+        </p>
+      );
     },
   },
   {
@@ -60,11 +66,23 @@ export const columns: ColumnDef<Schedule>[] = [
         </Button>
       );
     },
+    cell: ({ row }) => {
+      const scheduler = row.getValue("scheduler") as string;
+      return (
+        <p className={cn(interNormal.className, "capitalize")}>{scheduler}</p>
+      );
+    },
   },
   {
     accessorKey: "post_type",
     header: ({ column }) => {
       return <p>Post Type</p>;
+    },
+    cell: ({ row }) => {
+      const postType = row.getValue("post_type") as string;
+      return (
+        <p className={cn(interNormal.className, "capitalize")}>{postType}</p>
+      );
     },
   },
   {
@@ -78,6 +96,14 @@ export const columns: ColumnDef<Schedule>[] = [
           Account
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const accounts = row.getValue("account") as string[];
+      return (
+        <p className={cn(interNormal.className, "capitalize")}>
+          {accounts.map((account) => account).join(", ")}
+        </p>
       );
     },
   },

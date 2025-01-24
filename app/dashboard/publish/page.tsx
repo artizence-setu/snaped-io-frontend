@@ -3,7 +3,7 @@ import { Button } from "@/components/button";
 import { DataTable } from "@/components/ui/data-table";
 import { NewScheduleSheetState } from "@/features/hooks/new-schedule-sheet";
 import { useSchedulesStore } from "@/features/hooks/schedules-data";
-import { rubikMedium } from "@/fonts/font";
+import { rubikMedium, rubikNormal } from "@/fonts/font";
 import { cn } from "@/lib/utils";
 import { Plus } from "lucide-react";
 import { columns } from "./components/columns";
@@ -15,7 +15,7 @@ const PublishPage = () => {
     <div className="flex flex-col p-4 sm:p-6 md:p-8 gap-8 lg:pr-12">
       <div className="bg-background shadow rounded-lg border p-4">
         <div className="flex items-center justify-between">
-          <h2>Your Schedules</h2>
+          <h2 className={cn(rubikNormal.className)}>Your Schedules</h2>
           <Button
             className={cn(rubikMedium.className, "py-2")}
             onClick={() => setOpen()}

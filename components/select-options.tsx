@@ -1,4 +1,5 @@
 "use client";
+import { IconType } from "react-icons/lib";
 import {
   Select,
   SelectContent,
@@ -11,21 +12,33 @@ type OptionTypes = {
   options: {
     label: string;
     value: string;
+    icon?: IconType;
   }[];
   placeholder?: string;
   onChange: (value: string) => void;
+  defaultValue?: string;
+  disabled?: boolean;
 };
 
-const SelectOptions = (options: OptionTypes) => {
+const SelectOptions = (props: OptionTypes) => {
   return (
-    <Select onValueChange={(value) => options.onChange(value)}>
+    <Select
+      disabled={props.disabled}
+      defaultValue={props.defaultValue}
+      onValueChange={(value) => props.onChange(value)}
+    >
       <SelectTrigger>
-        <SelectValue placeholder={options.placeholder} />
+        <SelectValue placeholder={props.placeholder} />
       </SelectTrigger>
       <SelectContent>
-        {options.options.map((option, index) => {
+        {props.options.map((option, index) => {
           return (
-            <SelectItem key={index} value={option.value}>
+            <SelectItem
+              key={index}
+              value={option.value}
+              className="flex flex-row items-center"
+            >
+              {/* {option.icon && <option.icon className="mr-2 h-4 w-4" />} */}
               {option.label}
             </SelectItem>
           );

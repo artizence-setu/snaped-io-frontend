@@ -3,5 +3,5 @@ export type Schedule = {
   date: Date;
   scheduler: string;
   post_type: string;
-  account: string;
+  account: string[];
 };
