@@ -1,7 +1,25 @@
 "use client";
+
 import z from "zod";
+import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import axios, { isAxiosError } from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { FcGoogle } from "react-icons/fc";
+import { Eye, EyeOff } from "lucide-react";
+
+import { cn, setCookies } from "@/lib/utils";
+
+import { interMedium, interNormal } from "@/fonts/font";
+
+import { Button } from "@/components/button";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -10,17 +28,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Eye, EyeOff } from "lucide-react";
-import { Button } from "@/components/button";
-import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
-import { cn } from "@/lib/utils";
-import { interMedium, interNormal } from "@/fonts/font";
 
 const SignUpAuthForm = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -44,9 +54,23 @@ const SignUpAuthForm = () => {
   });
 
   // Submit function of Sign-Up, here we can implement api for sign-up
-  const onSubmit = (data: FormType) => {
+  const onSubmit = async (data: FormType) => {
     console.log(data);
     setIsLoading(true);
+
+    try {
+      const res = await axios.post("/login", data);
+      setCookies(res.data.token.access, res.data.token.refresh);
+      toast.success(res.data.msg || "Login Successfully");
+      router.push("/dashboard");
+    } catch (error) {
+      if (isAxiosError(error)) {
+        toast.error(error.response?.data.msg || "Something went wrong");
+      } else {
+        toast.error("Something went wrong");
+      }
+    }
+    setIsLoading(false);
   };
 
   return (

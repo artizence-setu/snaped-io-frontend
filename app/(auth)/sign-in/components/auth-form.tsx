@@ -15,10 +15,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/button";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
-import { cn } from "@/lib/utils";
+import { cn, setCookies } from "@/lib/utils";
 import { interMedium, interNormal } from "@/fonts/font";
+import axios, { isAxiosError } from "axios";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const SignInAuthForm = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const formSchema = z.object({
@@ -37,9 +41,23 @@ const SignInAuthForm = () => {
   });
 
   // Submit function of login, here we can implement api for login
-  const onSubmit = (data: FormType) => {
+  const onSubmit = async (data: FormType) => {
     console.log(data);
     setIsLoading(true);
+
+    try {
+      const res = await axios.post("/login", data);
+      setCookies(res.data.token.access, res.data.token.refresh);
+      toast.success(res.data.msg || "Login Successfully");
+      router.push("/dashboard");
+    } catch (error) {
+      if (isAxiosError(error)) {
+        toast.error(error.response?.data.msg || "Something went wrong");
+      } else {
+        toast.error("Something went wrong");
+      }
+    }
+    setIsLoading(false);
   };
 
   return (
