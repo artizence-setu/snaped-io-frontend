@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { CookieValueTypes, setCookie, deleteCookie } from "cookies-next";
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -12,24 +12,24 @@ export const setCookies = (
   refresh: string | CookieValueTypes
 ) => {
   setCookie("access_token", access, {
-    cookies,
+    // cookies,
   });
   setCookie("refresh_token", refresh, {
-    cookies,
+    // cookies,
   });
   setCookie("system-login", false, {
-    cookies,
+    // cookies,
   });
 };
 
 export const deleteCookies = () => {
   deleteCookie("access_token", {
-    cookies,
+    // cookies,
   });
   deleteCookie("refresh_token", {
-    cookies,
+    // cookies,
   });
   deleteCookie("system-login", {
-    cookies,
+    // cookies,
   });
 };

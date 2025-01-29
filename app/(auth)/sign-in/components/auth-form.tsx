@@ -26,8 +26,10 @@ const SignInAuthForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const formSchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(6),
+    email: z.string().email("Invaild email"),
+    password: z
+      .string()
+      .min(6, "Password must be at least 6 characters required"),
   });
 
   type FormType = z.infer<typeof formSchema>;

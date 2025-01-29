@@ -27,7 +27,7 @@ const SideNavbar = () => {
       icon: TbBulb,
     },
     {
-      href: "/dashboard/editor",
+      href: "/dashboard/video-editor",
       name: "Video Editor",
       icon: TbVideoPlus,
     },
