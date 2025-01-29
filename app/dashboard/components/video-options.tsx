@@ -3,6 +3,7 @@ import { TbArrowRight } from "react-icons/tb";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { interLight, interNormal } from "@/fonts/font";
+import Link from "next/link";
 
 const VideoOptions = () => {
   const options = [
@@ -73,10 +74,17 @@ const VideoOptions = () => {
               {option.description}
             </p>
             <div className="flex justify-center mt-auto">
-              <Button className={cn("py-2 mt-2", interLight.className)}>
-                Create Video
-                <TbArrowRight className="ml-1 size-5" />
-              </Button>
+              <Link
+                href="/dashboard/video-generator"
+                className="flex items-center"
+              >
+                <Button
+                  className={cn("py-2 mt-2 w-full", interLight.className)}
+                >
+                  Create Video
+                  <TbArrowRight className="ml-1 size-5" />
+                </Button>
+              </Link>
             </div>
           </div>
         ))}

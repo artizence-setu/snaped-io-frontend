@@ -1,11 +1,9 @@
-import { TbBulb, TbArrowRight } from "react-icons/tb";
-import { BsLightningCharge } from "react-icons/bs";
-import { HiOutlineVideoCamera } from "react-icons/hi";
-import { PiRocketBold } from "react-icons/pi";
+import { TbArrowRight } from "react-icons/tb";
 import { Button } from "@/components/button";
 import { cn } from "@/lib/utils";
 import { interLight, interNormal } from "@/fonts/font";
 import Image from "next/image";
+import Link from "next/link";
 
 const Steps = () => {
   const steps = [
@@ -15,6 +13,7 @@ const Steps = () => {
         "Find inspiration effortlessly by browsing trending topics and themes tailored to your creative goals and audience.",
       icon: "/icons/bulb.svg",
       button: "Explore",
+      href: "/dashboard/explore",
     },
     {
       title: "Generate Videos",
@@ -22,6 +21,7 @@ const Steps = () => {
         "Turn your ideas into professional-quality faceless videos in minutes with our powerful Al-driven tools.",
       icon: "/icons/flash.svg",
       button: "Generate",
+      href: "/dashboard/video-generator",
     },
     {
       title: "Edit Videos",
@@ -29,6 +29,7 @@ const Steps = () => {
         "Fine-tune your videos by adjusting visuals, captions, and voiceovers to create content that stands out.",
       icon: "/icons/video.svg",
       button: "Edit",
+      href: "/dashboard/video-editor",
     },
     {
       title: "Publish",
@@ -36,6 +37,7 @@ const Steps = () => {
         "Seamlessly schedule and share your videos across multiple platforms to reach your audience at the perfect time.",
       icon: "/icons/rocket.svg",
       button: "Publish",
+      href: "/dashboard/publish",
     },
   ];
   return (
@@ -70,11 +72,13 @@ const Steps = () => {
               {step.description}
             </p>
           </div>
-          <div className={cn("mt-auto", interLight.className)}>
-            <Button>
-              {step.button}
-              <TbArrowRight className="ml-1 size-5" />
-            </Button>
+          <div className={cn("mt-auto w-fit", interLight.className)}>
+            <Link href={step.href} className="w-fit">
+              <Button>
+                {step.button}
+                <TbArrowRight className="ml-1 size-5" />
+              </Button>
+            </Link>
           </div>
         </div>
       ))}
