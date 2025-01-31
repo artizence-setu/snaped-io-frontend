@@ -62,12 +62,7 @@ const SignUpAuthForm = () => {
     setIsLoading(true);
 
     try {
-      const res = await axiosInstance.post("/accounts/register/", {
-        name: data.name,
-        email: data.email,
-        password: data.password,
-        // recieve_emails: data.recieve_emails,
-      });
+      const res = await axiosInstance.post("/accounts/register/", data);
       setCookies(res.data.token.access, res.data.token.refresh);
       toast.success(res.data.msg || "Login Successfully");
       router.push("/dashboard");
