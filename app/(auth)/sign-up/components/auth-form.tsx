@@ -60,7 +60,6 @@ const SignUpAuthForm = () => {
   const onSubmit = async (data: FormType) => {
     console.log(data);
     setIsLoading(true);
-
     try {
       const res = await axiosInstance.post("/accounts/register/", {
         name: data.name,
