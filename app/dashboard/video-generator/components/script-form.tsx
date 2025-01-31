@@ -36,6 +36,8 @@ type Props = {
 
 const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [msg, setMsg] = useState("");
   const form = useForm<FormType>({
     defaultValues: defaultValues || {},
     resolver: zodResolver(formSchema),
@@ -43,7 +45,11 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
 
   const onSubmit = (data: FormType) => {
     setIsOpen(false);
-    onScriptSubmit(data);
+    setIsGenerating(true);
+    setMsg(
+      "We're currently generating your video! Once it's ready, we'll send it straight to your email. Stay tuned!"
+    );
+    // onScriptSubmit(data);
   };
 
   const onCancel = () => {
@@ -71,10 +77,10 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
                     rows={10}
                     className={cn(
                       interNormal.className,
-                      "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 bg-primary"
+                      "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 bg-primary disabled:opacity-50"
                     )}
                     placeholder="Write your script here"
-                    disabled={form.formState.isSubmitting}
+                    disabled={form.formState.isSubmitting || isGenerating}
                     value={field.value}
                     onChange={(e) => {
                       field.onChange(e.target.value);
@@ -101,8 +107,9 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
                         rows={5}
                         className={cn(
                           interNormal.className,
-                          "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 bg-primary"
+                          "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 bg-primary disabled:opacity-50"
                         )}
+                        disabled={form.formState.isSubmitting || isGenerating}
                         placeholder="Write your prompt here"
                       />
                     </FormControl>
@@ -114,6 +121,7 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
                 <ShadcnBtn
                   variant="outline"
                   className="mr-2 rounded-lg"
+                  disabled={form.formState.isSubmitting || isGenerating}
                   onClick={onCancel}
                 >
                   Cancel
@@ -122,6 +130,7 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
                   type="submit"
                   className="px-4 py-2"
                   onClick={form.handleSubmit(onSubmit)}
+                  disabled={form.formState.isSubmitting || isGenerating}
                 >
                   Generate
                 </Button>
@@ -131,14 +140,16 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
           <div className="flex items-center justify-end">
             <button
               type="button"
-              className="mt-2 w-fit border border-gradient text-gradient bg-custom-gradient bg-clip-text px-4 py-1 rounded-lg font-semibold hover:opacity-80 transition"
+              className="mt-2 w-fit border border-gradient text-gradient bg-custom-gradient bg-clip-text px-4 py-1 rounded-lg font-semibold hover:opacity-80 transition disabled:opacity-50"
               onClick={() => setIsOpen(true)}
+              disabled={form.formState.isSubmitting || isGenerating}
             >
               Generate with AI
             </button>
           </div>
         </form>
       </Form>
+      {msg && <p className="text-red-500 text-base italic">{msg}</p>}
     </div>
   );
 };
