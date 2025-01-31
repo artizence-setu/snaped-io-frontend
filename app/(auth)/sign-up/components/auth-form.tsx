@@ -60,6 +60,7 @@ const SignUpAuthForm = () => {
   const onSubmit = async (data: FormType) => {
     console.log(data);
     setIsLoading(true);
+    data.append("password2, data.get("password") + "")
 
     try {
       const res = await axiosInstance.post("/accounts/register/", data);
