@@ -69,8 +69,8 @@ const SignUpAuthForm = () => {
         password2: data.password,
         // recieve_emails: data.recieve_emails,
       });
-      setCookies(res.data.token.access, res.data.token.refresh);
-      toast.success(res.data.msg || "Login Successfully");
+      // setCookies(res.data.token.access, res.data.token.refresh);
+      toast.success(res.data.msg || "SignUp Successfully");
       router.push("/sign-in");
     } catch (error) {
       if (isAxiosError(error)) {
