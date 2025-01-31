@@ -3,7 +3,7 @@
 import z from "zod";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import axios, { isAxiosError } from "axios";
+import { isAxiosError } from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import Link from "next/link";
@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { FcGoogle } from "react-icons/fc";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, LoaderCircle } from "lucide-react";
 
 import { cn, setCookies } from "@/lib/utils";
 
@@ -28,6 +28,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { axiosInstance } from "@/lib/axios";
 
 const SignUpAuthForm = () => {
   const router = useRouter();
@@ -61,14 +62,21 @@ const SignUpAuthForm = () => {
     setIsLoading(true);
 
     try {
-      const res = await axios.post("/login", data);
+      const res = await axiosInstance.post("/accounts/register/", {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        // recieve_emails: data.recieve_emails,
+      });
       setCookies(res.data.token.access, res.data.token.refresh);
       toast.success(res.data.msg || "Login Successfully");
       router.push("/dashboard");
     } catch (error) {
       if (isAxiosError(error)) {
+        console.log("SIGNUP:", error);
         toast.error(error.response?.data.msg || "Something went wrong");
       } else {
+        console.log("SIGNUP:", error);
         toast.error("Something went wrong");
       }
     }
@@ -202,7 +210,13 @@ const SignUpAuthForm = () => {
               disabled={isLoading}
               className="w-full text-lg font-extralight tracking-wide py-2"
             >
-              {isLoading ? "Creating....." : "Create Account"}
+              {isLoading ? (
+                <>
+                  <LoaderCircle className="animate-spin mr-2" /> Creating.....
+                </>
+              ) : (
+                "Create Account"
+              )}
             </Button>
           </form>
         </Form>

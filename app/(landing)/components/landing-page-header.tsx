@@ -35,17 +35,21 @@ const LandingPageHeader = () => {
         ))}
       </div>
       <div className="hidden md:flex items-center gap-4">
-        <button
-          className={clsx(
-            "px-4 py-2 rounded-lg text-sm bg-transparent border hover:opacity-60 transition-all",
-            interNormal.className
-          )}
-        >
-          <Link href="/sign-in">Login</Link>
-        </button>
-        <Button className={clsx("py-2", interMedium.className)}>
-          <Link href="/sign-up">Signup</Link>
-        </Button>
+        <Link href="/sign-in">
+          <button
+            className={clsx(
+              "px-4 py-2 rounded-lg text-sm bg-transparent border hover:opacity-60 transition-all",
+              interNormal.className
+            )}
+          >
+            Login
+          </button>
+        </Link>
+        <Link href="/sign-up">
+          <Button className={clsx("py-2", interMedium.className)}>
+            Signup
+          </Button>
+        </Link>
       </div>
       {/* Mobile Menu */}
       <div className="md:hidden">

@@ -20,6 +20,8 @@ import { interMedium, interNormal } from "@/fonts/font";
 import axios, { isAxiosError } from "axios";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { axiosInstance } from "@/lib/axios";
+import { LoaderCircle } from "lucide-react";
 
 const SignInAuthForm = () => {
   const router = useRouter();
@@ -42,23 +44,44 @@ const SignInAuthForm = () => {
     resolver: zodResolver(formSchema),
   });
 
+  const encodedParams = new URLSearchParams();
+  encodedParams.set("", "");
+
   // Submit function of login, here we can implement api for login
   const onSubmit = async (data: FormType) => {
     console.log(data);
     setIsLoading(true);
 
+    const options = {
+      method: "POST",
+      url: "https://snaped.artizence.com/accounts/login/",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      data: data,
+    };
+
     try {
-      const res = await axios.post("/login", data);
-      setCookies(res.data.token.access, res.data.token.refresh);
-      toast.success(res.data.msg || "Login Successfully");
-      router.push("/dashboard");
+      const { data } = await axios.request(options);
+      console.log(data);
+      toast.success("Login Successfully");
     } catch (error) {
-      if (isAxiosError(error)) {
-        toast.error(error.response?.data.msg || "Something went wrong");
-      } else {
-        toast.error("Something went wrong");
-      }
+      toast.error("Something went wrong");
+      console.error(error);
     }
+
+    // try {
+    //   const res = await axiosInstance.post("/accounts/login/", data);
+    //   setCookies(res.data.token.access, res.data.token.refresh);
+    //   toast.success(res.data.msg || "Login Successfully");
+    //   router.push("/dashboard");
+    // } catch (error) {
+    //   if (isAxiosError(error)) {
+    //     console.log("SIGNIN:", error);
+    //     toast.error(error.response?.data.msg || "Something went wrong");
+    //   } else {
+    //     console.log("SIGNIN:", error);
+    //     toast.error("Something went wrong");
+    //   }
+    // }
     setIsLoading(false);
   };
 
@@ -132,7 +155,13 @@ const SignInAuthForm = () => {
               disabled={isLoading}
               className="w-full text-lg font-extralight tracking-wide py-2"
             >
-              {isLoading ? "Logging....." : "Login"}
+              {isLoading ? (
+                <>
+                  <LoaderCircle className="animate-spin mr-2" /> Logging in.....
+                </>
+              ) : (
+                "Login"
+              )}
             </Button>
           </form>
         </Form>

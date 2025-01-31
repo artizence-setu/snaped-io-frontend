@@ -4,7 +4,7 @@ import LandingPageFooter from "./components/landing-page-footer";
 
 const LandingLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="max-w-screen-2xl mx-auto">
+    <div>
       <SaleBanner />
       <LandingPageHeader />
       {children}
