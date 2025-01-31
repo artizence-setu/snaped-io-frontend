@@ -52,36 +52,36 @@ const SignInAuthForm = () => {
     console.log(data);
     setIsLoading(true);
 
-    const options = {
-      method: "POST",
-      url: "https://snaped.artizence.com/accounts/login/",
-      headers: { "content-type": "application/x-www-form-urlencoded" },
-      data: data,
-    };
-
-    try {
-      const { data } = await axios.request(options);
-      console.log(data);
-      toast.success("Login Successfully");
-    } catch (error) {
-      toast.error("Something went wrong");
-      console.error(error);
-    }
+    // const options = {
+    //   method: "POST",
+    //   url: "https://snaped.artizence.com/accounts/login/",
+    //   headers: { "content-type": "application/x-www-form-urlencoded" },
+    //   data: data,
+    // };
 
     // try {
-    //   const res = await axiosInstance.post("/accounts/login/", data);
-    //   setCookies(res.data.token.access, res.data.token.refresh);
-    //   toast.success(res.data.msg || "Login Successfully");
-    //   router.push("/dashboard");
+    //   const { data } = await axios.request(options);
+    //   console.log(data);
+    //   toast.success("Login Successfully");
     // } catch (error) {
-    //   if (isAxiosError(error)) {
-    //     console.log("SIGNIN:", error);
-    //     toast.error(error.response?.data.msg || "Something went wrong");
-    //   } else {
-    //     console.log("SIGNIN:", error);
-    //     toast.error("Something went wrong");
-    //   }
+    //   toast.error("Something went wrong");
+    //   console.error(error);
     // }
+
+    try {
+      const res = await axiosInstance.post("/accounts/login/", data);
+      setCookies(res.data.token.access, res.data.token.refresh);
+      toast.success(res.data.msg || "Login Successfully");
+      router.push("/dashboard");
+    } catch (error) {
+      if (isAxiosError(error)) {
+        console.error("SIGNIN:", error);
+        toast.error(error.response?.data.msg || "Something went wrong");
+      } else {
+        console.error("SIGNIN:", error);
+        toast.error("Something went wrong");
+      }
+    }
     setIsLoading(false);
   };
 

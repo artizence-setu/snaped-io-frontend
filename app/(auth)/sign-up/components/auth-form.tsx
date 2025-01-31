@@ -66,17 +66,18 @@ const SignUpAuthForm = () => {
         name: data.name,
         email: data.email,
         password: data.password,
+        password2: data.password,
         // recieve_emails: data.recieve_emails,
       });
       setCookies(res.data.token.access, res.data.token.refresh);
       toast.success(res.data.msg || "Login Successfully");
-      router.push("/dashboard");
+      router.push("/sign-in");
     } catch (error) {
       if (isAxiosError(error)) {
-        console.log("SIGNUP:", error);
+        console.error("SIGNUP:", error);
         toast.error(error.response?.data.msg || "Something went wrong");
       } else {
-        console.log("SIGNUP:", error);
+        console.error("SIGNUP:", error);
         toast.error("Something went wrong");
       }
     }
