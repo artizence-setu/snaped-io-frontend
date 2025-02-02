@@ -1,52 +1,15 @@
 "use client";
 import Link from "next/link";
-import Logo from "../../../components/logo";
-import {
-  TbLayoutDashboard,
-  TbBulb,
-  TbVideoPlus,
-  TbUpload,
-  TbPhoto,
-  TbCalendar,
-} from "react-icons/tb";
+import Logo from "@/components/logo";
 import clsx from "clsx";
 import { interNormal } from "@/fonts/font";
 import { usePathname } from "next/navigation";
+import useNavLinks from "./nav-links";
 
 const SideNavbar = () => {
   const pathname = usePathname();
-  const navlinks = [
-    {
-      href: "/dashboard",
-      name: "Dashboard",
-      icon: TbLayoutDashboard,
-    },
-    {
-      href: "/dashboard/ideas",
-      name: "Explore Ideas",
-      icon: TbBulb,
-    },
-    {
-      href: "/dashboard/video-editor",
-      name: "Video Editor",
-      icon: TbVideoPlus,
-    },
-    {
-      href: "/dashboard/publish",
-      name: "Publish",
-      icon: TbUpload,
-    },
-    {
-      href: "/dashboard/myvideos",
-      name: "My Videos",
-      icon: TbPhoto,
-    },
-    {
-      href: "/dashboard/calender",
-      name: "Calender",
-      icon: TbCalendar,
-    },
-  ];
+  const navlinks = useNavLinks();
+
   return (
     <div className="hidden fixed top-0 left-0 w-64 border-r bg-background h-screen border-2 shadow lg:flex flex-col py-6">
       <Logo />
@@ -56,21 +19,34 @@ const SideNavbar = () => {
             key={index}
             href={item.href}
             className={clsx(
-              "flex items-center px-4 py-2 text-lg w-full hover:bg-blue-100 transition-all group dark:hover:bg-gray-900",
-              interNormal.className,
-              pathname === item.href && "bg-blue-100 dark:bg-gray-900"
+              "flex gap-3 px-4 py-2 text-lg w-full hover:bg-blue-100 transition-all group dark:hover:bg-gray-900 nav-link",
+              pathname === item.href && "bg-blue-100 dark:bg-gray-900",
+              interNormal.className
             )}
           >
-            <item.icon className="mr-3 size-6 text-foreground/70 hover:bg-custom-gradient bg-clip-text text-gradient" />
-            <span
-              className={clsx(
-                "text-foreground/70 bg-foreground/70 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all",
-                pathname === item.href &&
-                  "bg-custom-gradient bg-clip-text text-gradient"
-              )}
-            >
-              {item.name}
-            </span>
+            <div className="w-12 h-10 flex items-center justify-center">
+              {item.icon}
+            </div>
+            <div className="-mt-1">
+              <p
+                className={clsx(
+                  "text-foreground/70 bg-foreground/70 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all",
+                  pathname === item.href &&
+                    "bg-custom-gradient bg-clip-text text-gradient"
+                )}
+              >
+                {item.name}
+              </p>
+              <p
+                className={clsx(
+                  "text-foreground/70 bg-foreground/70 text-[10px] leading-3 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all",
+                  pathname === item.href &&
+                    "bg-custom-gradient bg-clip-text text-gradient"
+                )}
+              >
+                {item.brief}
+              </p>
+            </div>
           </Link>
         ))}
       </nav>
@@ -79,25 +55,3 @@ const SideNavbar = () => {
 };
 
 export default SideNavbar;
-
-/*
-
-         .btn-grad {background-image: linear-gradient(to right, #4568DC 0%, #B06AB3  51%, #4568DC  100%)}
-         .btn-grad {
-            margin: 10px;
-            padding: 15px 45px;
-            text-align: center;
-            text-transform: uppercase;
-            transition: 0.5s;
-            background-size: 200% auto;
-            color: white;            
-            box-shadow: 0 0 20px #eee;
-            border-radius: 10px;
-            display: block;
-          }
-
-          .btn-grad:hover {
-            background-position: right center; /* change the direction of the change here */
-/*color: #fff;
-            text-decoration: none;
-}*/

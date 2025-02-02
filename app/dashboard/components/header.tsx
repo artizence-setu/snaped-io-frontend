@@ -10,23 +10,18 @@ import { useMedia } from "react-use";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/button";
 import { Menu } from "lucide-react";
-import {
-  TbLayoutDashboard,
-  TbBulb,
-  TbVideoPlus,
-  TbUpload,
-  TbPhoto,
-  TbCalendar,
-} from "react-icons/tb";
-import Logo from "../../../components/logo";
+import Logo from "@/components/logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { interNormal, rubikNormal } from "@/fonts/font";
 import ThemeButton from "@/components/theme-button";
+import useNavLinks from "./nav-links";
+import "@/app/globals.scss";
 
 const Header = () => {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
   const userOptions = [
     {
       icon: CgProfile,
@@ -49,10 +44,11 @@ const Header = () => {
       link: "/settings",
     },
   ];
+  const isMobile = useMedia("(max-width: 1024px)", false);
+  const navlinks = useNavLinks();
+
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const isMobile = useMedia("(max-width: 1024px)", false);
 
   useEffect(() => {
     document.documentElement.addEventListener("click", (e) => {
@@ -65,46 +61,13 @@ const Header = () => {
     });
   }, [dropdownOpen, dropdownRef]);
 
-  const navlinks = [
-    {
-      href: "/dashboard",
-      name: "Dashboard",
-      icon: TbLayoutDashboard,
-    },
-    {
-      href: "ideas",
-      name: "Explore Ideas",
-      icon: TbBulb,
-    },
-    {
-      href: "editor",
-      name: "Video Editor",
-      icon: TbVideoPlus,
-    },
-    {
-      href: "/publish",
-      name: "Publish",
-      icon: TbUpload,
-    },
-    {
-      href: "/myvideos",
-      name: "My Videos",
-      icon: TbPhoto,
-    },
-    {
-      href: "/calender",
-      name: "Calender",
-      icon: TbCalendar,
-    },
-  ];
-
   if (isMobile) {
     return (
       <header className="flex items-center bg-background shadow py-4 px-8 border">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild>
-            <Button className="bg-transparent border">
-              <Menu className="size-4" />
+          <SheetTrigger className="sticky top-0" asChild>
+            <Button className="bg-transparent border rounded-md px-[14px] py-1">
+              <Menu className="size-6" />
             </Button>
           </SheetTrigger>
           <SheetContent side={"left"} className="overflow-auto">
@@ -115,22 +78,36 @@ const Header = () => {
                   <Link
                     key={index}
                     href={item.href}
-                    className={cn(
-                      "flex items-center px-4 py-2 text-lg w-full hover:bg-blue-100 dark:hover:bg-gray-900 transition-all rounded-md group",
-                      interNormal.className,
-                      pathname == item.href && "bg-blue-100 dark:bg-gray-900"
+                    onClick={() => setIsOpen(false)}
+                    className={clsx(
+                      "flex gap-3 px-4 py-2 text-lg w-full hover:bg-blue-100 transition-all group dark:hover:bg-gray-900 nav-link rounded-md",
+                      pathname === item.href && "bg-blue-100 dark:bg-gray-900",
+                      interNormal.className
                     )}
                   >
-                    <item.icon className="mr-3 size-6 text-foreground/70 hover:bg-custom-gradient bg-clip-text text-gradient" />
-                    <span
-                      className={clsx(
-                        "text-foreground/70 bg-foreground/70 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all",
-                        pathname === item.href &&
-                          "bg-custom-gradient bg-clip-text text-gradient"
-                      )}
-                    >
-                      {item.name}
-                    </span>
+                    <div className="w-12 h-10 flex items-center justify-center">
+                      {item.icon}
+                    </div>
+                    <div className="-mt-1">
+                      <p
+                        className={clsx(
+                          "text-foreground/70 bg-foreground/70 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all",
+                          pathname === item.href &&
+                            "bg-custom-gradient bg-clip-text text-gradient"
+                        )}
+                      >
+                        {item.name}
+                      </p>
+                      <p
+                        className={clsx(
+                          "text-foreground/70 bg-foreground/70 text-[10px] leading-3 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all",
+                          pathname === item.href &&
+                            "bg-custom-gradient bg-clip-text text-gradient"
+                        )}
+                      >
+                        {item.brief}
+                      </p>
+                    </div>
                   </Link>
                 ))}
               </nav>
