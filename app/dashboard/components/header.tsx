@@ -12,15 +12,15 @@ import { Button } from "@/components/button";
 import { Menu } from "lucide-react";
 import Logo from "@/components/logo";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { interNormal, rubikNormal } from "@/fonts/font";
 import ThemeButton from "@/components/theme-button";
 import useNavLinks from "./nav-links";
-import "@/app/globals.scss";
 
 const Header = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const userOptions = [
     {
@@ -122,6 +122,7 @@ const Header = () => {
     <header className="flex items-center justify-end sticky inset-x-0 top-0 bg-background shadow py-4 px-8 border">
       <div className="hidden md:flex items-center justify-end gap-7">
         <button
+          onClick={() => router.push("/dashboard/video-generator")}
           className={cn(
             "bg-custom-gradient py-1 px-4 text-white rounded-md flex items-center gap-2 hover:opacity-80 transition",
             interNormal.className

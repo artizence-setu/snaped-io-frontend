@@ -23,7 +23,7 @@ import { Button } from "@/components/button";
 import { Button as ShadcnBtn } from "@/components/ui/button";
 
 const formSchema = z.object({
-  script: z.string().min(1, "Script is required"),
+  // script: z.string().min(1, "Script is required"),
   prompt: z.string().min(10, "Minimum 10 characters are required"),
 });
 
@@ -49,7 +49,7 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
     setMsg(
       "We're currently generating your video! Once it's ready, we'll send it straight to your email. Stay tuned!"
     );
-    // onScriptSubmit(data);
+    onScriptSubmit(data);
   };
 
   const onCancel = () => {
@@ -65,32 +65,6 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
-            name="script"
-            render={({ field }) => (
-              <FormItem className="flex flex-col">
-                <FormLabel>Write Your Script</FormLabel>
-                <FormControl>
-                  <textarea
-                    {...field}
-                    rows={10}
-                    className={cn(
-                      interNormal.className,
-                      "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 bg-primary disabled:opacity-50"
-                    )}
-                    placeholder="Write your script here"
-                    disabled={form.formState.isSubmitting || isGenerating}
-                    value={field.value}
-                    onChange={(e) => {
-                      field.onChange(e.target.value);
-                    }}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
             <DialogContent>
               <DialogHeader>
