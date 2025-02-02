@@ -1,6 +1,12 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { CookieValueTypes, setCookie, deleteCookie } from "cookies-next";
+import {
+  CookieValueTypes,
+  setCookie,
+  deleteCookie,
+  getCookie,
+  getCookies,
+} from "cookies-next";
 // import { cookies } from "next/headers";
 
 export function cn(...inputs: ClassValue[]) {

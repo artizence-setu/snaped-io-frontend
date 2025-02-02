@@ -44,29 +44,9 @@ const SignInAuthForm = () => {
     resolver: zodResolver(formSchema),
   });
 
-  const encodedParams = new URLSearchParams();
-  encodedParams.set("", "");
-
-  // Submit function of login, here we can implement api for login
   const onSubmit = async (data: FormType) => {
     console.log(data);
     setIsLoading(true);
-
-    // const options = {
-    //   method: "POST",
-    //   url: "https://snaped.artizence.com/accounts/login/",
-    //   headers: { "content-type": "application/x-www-form-urlencoded" },
-    //   data: data,
-    // };
-
-    // try {
-    //   const { data } = await axios.request(options);
-    //   console.log(data);
-    //   toast.success("Login Successfully");
-    // } catch (error) {
-    //   toast.error("Something went wrong");
-    //   console.error(error);
-    // }
 
     try {
       const res = await axiosInstance.post("/accounts/login/", data);

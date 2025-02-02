@@ -1,53 +1,68 @@
 "use client";
+import { axiosInstance } from "@/lib/axios";
 import ScriptForm from "./script-form";
 import VideoOptionsForm from "./video-options-form";
+import { getCookie } from "cookies-next";
 
 const VideoGeneratorForm = () => {
-  const scriptDefaultValue = {
-    script: "",
+  const promptDefaultValues = {
     prompt: "",
   };
 
-  /* 
-    Script Submission Function, here we can implement api for script submission and get the response from the api
-  */
-  const handleScriptSubmit = (data: typeof scriptDefaultValue) => {
+  const handlePromptSubmit = (data: typeof promptDefaultValues) => {
     console.log(data);
   };
 
-  const videoOptionsDefaultValues = {
-    language: "",
+  const scriptDefaultValues = {
+    script: "",
     caption: "",
-    voice: "",
-    videoLength: "",
-    aspectRatio: "",
-    captionPosition: "",
-    videoQuality: "",
-    captionAnimation: "",
-    backgroundMusic: "",
-    soundEffect: "",
-    animation: "",
-    imageTransition: "",
+    voice_link: "",
+    video_length: "",
+    aspect_ratio: "",
     folder: "",
   };
 
-  /*
-    Video Options Submission Function, here we can implement api for video options submission and get the response from the api
-  */
-  const onVideoOptionSubmit = (data: typeof videoOptionsDefaultValues) => {
+  const onScriptSubmit = async (data: typeof scriptDefaultValues) => {
     console.log(data);
+    try {
+      const res = await axiosInstance.post(
+        "/api/facelessv1queries/",
+        {
+          script: data.script,
+          ai_assistant: false,
+          prompt_for_video: null,
+          aspect_ratio: null,
+          folder: data.folder,
+          voice_link: data.voice_link,
+          caption: data.caption,
+          video_length: Number(data.video_length),
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getCookie("access_token")}`,
+          },
+        }
+      );
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="min-h-screen flex flex-col p-4 sm:p-6 md:p-8 gap-8 lg:pr-12">
-      <ScriptForm
+      {/* <ScriptForm
         defaultValues={scriptDefaultValue}
         onScriptSubmit={handleScriptSubmit}
-      />
+      /> */}
 
       <VideoOptionsForm
-        defaultValues={videoOptionsDefaultValues}
-        onVideoOptionSubmit={onVideoOptionSubmit}
+        promptDefaultValues={promptDefaultValues}
+        onPromptSubmit={handlePromptSubmit}
+        scriptDefaultValues={scriptDefaultValues}
+        onScriptSubmit={onScriptSubmit}
       />
     </div>
   );
