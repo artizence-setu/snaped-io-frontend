@@ -21,11 +21,12 @@ import axios, { isAxiosError } from "axios";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { axiosInstance } from "@/lib/axios";
-import { LoaderCircle } from "lucide-react";
+import { Eye, EyeOff, LoaderCircle } from "lucide-react";
 
 const SignInAuthForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const formSchema = z.object({
     email: z.string().email("Invaild email"),
@@ -109,13 +110,27 @@ const SignInAuthForm = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input
-                        {...field}
-                        type="password"
-                        disabled={isLoading}
-                        placeholder="Enter your Password"
-                        className="focus-visible:ring-[#9F62CA]"
-                      />
+                      <div className="relative">
+                        <Input
+                          {...field}
+                          disabled={isLoading}
+                          type={showPassword ? "text" : "password"}
+                          className="focus-visible:ring-[#9F62CA]"
+                          placeholder="Enter your password"
+                        />
+                        <button
+                          disabled={isLoading}
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#9F62CA] hover:text-[#9F62CA]/70"
+                        >
+                          {showPassword ? (
+                            <EyeOff size={20} />
+                          ) : (
+                            <Eye size={20} />
+                          )}
+                        </button>
+                      </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
