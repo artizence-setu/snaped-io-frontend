@@ -11,6 +11,31 @@ const VideoGeneratorForm = () => {
 
   const handlePromptSubmit = (data: typeof promptDefaultValues) => {
     console.log(data);
+    try {
+      const res = axiosInstance.post(
+        "/api/facelessv1queries/",
+        {
+          script: null,
+          ai_assistant: true,
+          prompt_for_video: data.prompt,
+          aspect_ratio: null,
+          folder: null,
+          voice_link: null,
+          caption: null,
+          video_length: null,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getCookie("access_token")}`,
+          },
+        }
+      );
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const scriptDefaultValues = {
