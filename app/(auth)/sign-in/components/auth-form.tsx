@@ -92,7 +92,7 @@ const SignInAuthForm = () => {
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
-                      className="focus-visible:ring-[#9F62CA]"
+                      className="focus-visible:ring-[#4E43FA]"
                       placeholder="Enter your Email"
                       disabled={isLoading}
                       {...field}
@@ -115,14 +115,14 @@ const SignInAuthForm = () => {
                           {...field}
                           disabled={isLoading}
                           type={showPassword ? "text" : "password"}
-                          className="focus-visible:ring-[#9F62CA]"
+                          className="focus-visible:ring-[#4E43FA]"
                           placeholder="Enter your password"
                         />
                         <button
                           disabled={isLoading}
                           type="button"
                           onClick={() => setShowPassword(!showPassword)}
-                          className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#9F62CA] hover:text-[#9F62CA]/70"
+                          className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#9F62CA] hover:text-[#4E43FA]/70"
                         >
                           {showPassword ? (
                             <EyeOff size={20} />
