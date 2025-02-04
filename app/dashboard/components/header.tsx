@@ -63,9 +63,9 @@ const Header = () => {
 
   if (isMobile) {
     return (
-      <header className="flex items-center bg-background shadow py-4 px-8 border">
+      <header className="sticky top-0 first-line:flex items-center bg-background shadow py-4 px-8 border">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger className="sticky top-0" asChild>
+          <SheetTrigger asChild>
             <Button className="bg-transparent border rounded-md px-[14px] py-1">
               <Menu className="size-6" />
             </Button>
@@ -119,7 +119,7 @@ const Header = () => {
   }
 
   return (
-    <header className="flex items-center justify-end sticky inset-x-0 top-0 bg-background shadow py-4 px-8 border">
+    <header className="flex items-center justify-end sticky inset-x-0 top-0 bg-background shadow py-4 px-8 border z-50">
       <div className="hidden md:flex items-center justify-end gap-7">
         <button
           onClick={() => router.push("/dashboard/video-generator")}

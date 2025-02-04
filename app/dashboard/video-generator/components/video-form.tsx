@@ -1,45 +1,12 @@
 "use client";
 import { axiosInstance } from "@/lib/axios";
-import ScriptForm from "./script-form";
 import VideoOptionsForm from "./video-options-form";
 import { getCookie } from "cookies-next";
 
 const VideoGeneratorForm = () => {
-  const promptDefaultValues = {
-    prompt: "",
-  };
-
-  const handlePromptSubmit = (data: typeof promptDefaultValues) => {
-    console.log(data);
-    try {
-      const res = axiosInstance.post(
-        "/api/facelessv1queries/",
-        {
-          script: null,
-          ai_assistant: true,
-          prompt_for_video: data.prompt,
-          aspect_ratio: null,
-          folder: null,
-          voice_link: null,
-          caption: null,
-          video_length: null,
-        },
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${getCookie("access_token")}`,
-          },
-        }
-      );
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const scriptDefaultValues = {
+  const defaultValues = {
     script: "",
+    prompt: "",
     caption: "",
     voice_link: "",
     video_length: "",
@@ -47,15 +14,17 @@ const VideoGeneratorForm = () => {
     folder: "",
   };
 
-  const onScriptSubmit = async (data: typeof scriptDefaultValues) => {
-    console.log(data);
+  const handleSubmit = async (
+    data: Partial<typeof defaultValues>,
+    isAIMode: boolean
+  ) => {
     try {
       const res = await axiosInstance.post(
         "/api/facelessv1queries/",
         {
-          script: data.script,
-          ai_assistant: false,
-          prompt_for_video: null,
+          script: isAIMode ? null : data.script,
+          ai_assistant: isAIMode,
+          prompt_for_video: isAIMode ? data.prompt : null,
           aspect_ratio: null,
           folder: data.folder,
           voice_link: data.voice_link,
@@ -70,25 +39,15 @@ const VideoGeneratorForm = () => {
           },
         }
       );
-      console.log(res);
+      console.log("Response:", res.data);
     } catch (error) {
-      console.log(error);
+      console.error("Error:", error);
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col p-4 sm:p-6 md:p-8 gap-8 lg:pr-12">
-      {/* <ScriptForm
-        defaultValues={scriptDefaultValue}
-        onScriptSubmit={handleScriptSubmit}
-      /> */}
-
-      <VideoOptionsForm
-        promptDefaultValues={promptDefaultValues}
-        onPromptSubmit={handlePromptSubmit}
-        scriptDefaultValues={scriptDefaultValues}
-        onScriptSubmit={onScriptSubmit}
-      />
+    <div className="flex flex-col p-4 sm:p-6 md:p-8 gap-8 lg:pr-12">
+      <VideoOptionsForm defaultValues={defaultValues} onSubmit={handleSubmit} />
     </div>
   );
 };

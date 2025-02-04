@@ -1,9 +1,17 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import z from "zod";
+import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import z from "zod";
+import { interNormal } from "@/fonts/font";
+import { Button } from "@/components/button";
+import { FaRegSquare } from "react-icons/fa6";
+import { RiGeminiLine } from "react-icons/ri";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { HiOutlineDeviceMobile } from "react-icons/hi";
+import { IoTabletLandscapeOutline } from "react-icons/io5";
+import { SelectOptions } from "@/components/select-options";
 import {
   Form,
   FormControl,
@@ -12,14 +20,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "@/components/button";
-import { interNormal, rubikNormal } from "@/fonts/font";
-import SelectOptions from "@/components/select-options";
-import { cn } from "@/lib/utils";
-import { HiOutlineDeviceMobile } from "react-icons/hi";
-import { IoTabletLandscapeOutline } from "react-icons/io5";
-import { FaRegSquare } from "react-icons/fa6";
-import { RiGeminiLine } from "react-icons/ri";
 
 const formSchema = z.object({
   script: z.string().min(1, "Script is required"),
