@@ -122,7 +122,7 @@ const SignInAuthForm = () => {
                           disabled={isLoading}
                           type="button"
                           onClick={() => setShowPassword(!showPassword)}
-                          className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#9F62CA] hover:text-[#4E43FA]/70"
+                          className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#4E43FA] hover:text-[#4E43FA]/70"
                         >
                           {showPassword ? (
                             <EyeOff size={20} />
