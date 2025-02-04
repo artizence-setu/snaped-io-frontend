@@ -48,4 +48,4 @@ const SelectOptions = (props: OptionTypes) => {
   );
 };
 
-export default SelectOptions;
+export { SelectOptions };
