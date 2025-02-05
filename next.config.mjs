@@ -9,6 +9,9 @@ const nextConfig = {
       {
         hostname: "avatar.iran.liara.run",
       },
+      {
+        hostname : "prod-tos.avatar2everyone.com",
+      }
     ],
   },
   experimental: {
