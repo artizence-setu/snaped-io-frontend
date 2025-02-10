@@ -87,9 +87,12 @@ const VideoOptionsForm: React.FC<VideoOptionsProps> = ({
   ];
 
   const aspect_ratioOptions = [
-    { label: "Vertical (9:16)", value: "9:16" },
-    { label: "Horizontal (16:9)", value: "16:9" },
-    { label: "Square (1:1)", value: "1:1" },
+    { label: "Square HD", value: "Square HD" },
+    { label: "Portrait 3:4 HD", value: "Portrait 3:4 HD" },
+    { label: "Portrait 9:16 HD", value: "Portrait 9:16 HD" },
+    { label: "Landscape 4:3 HD", value: "Landscape 4:3 HD" },
+    { label: "Landscape 16:9 HD", value: "Landscape 16:9 HD" },
+
   ];
 
   const folderOptions = [
