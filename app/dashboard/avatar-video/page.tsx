@@ -6,6 +6,9 @@ import AvatarForm from "./components/avatar-form";
 import AvatarSelection from "./components/avatar-selection";
 import { useState } from "react";
 import Preview from "./components/preview";
+import { PersonStanding, StarIcon } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 
 const AvatarVideo = () => {
 
@@ -15,8 +18,19 @@ const AvatarVideo = () => {
   const [videoUrl, setVideoUrl] = useState("")
   const [selectedAnchor, setSelectedAnchor] = useState("");
   const [selectedAvatar, setSelectedAvatar] = useState("");
+  const [aspectRatio , setAspectRatio] = useState("");
+  const [selectedVoice, setSelectedVoice] = useState("")
+  const [selectedMenu , setSelectedMenu] = useState<number>(1);
+
+  const [generationProgress, setGenerationProgress] = useState(0);
+
+
+  const changeMenu = (id : number) => {
+    setSelectedMenu(id);
+  }
 
   return (
+
     <div className="flex flex-col p-4 sm:p-6 md:p-8 gap-8 lg:pr-12">
       <div className="bg-background shadow rounded-lg border p-4">
         <div className="grid grid-cols-5 w-full h-full">
@@ -25,12 +39,30 @@ const AvatarVideo = () => {
               <p>Avatar Video</p>
               <div className="h-[3px] w-[5.5rem] bg-custom-gradient rounded-lg"></div>
             </div>
-            <AvatarForm selectedAvatar={selectedAvatar} text={text} setText={setText} setLanguage={setLanguage} setVideoUrl={setVideoUrl} setAudioUrl={setAudioUrl} setSelectedAnchor={setSelectedAnchor}/>
+            <AvatarForm generationProgress={generationProgress} setGenerationProgress={setGenerationProgress} selectedVoice={selectedVoice} setSelectedVoice={setSelectedVoice} aspectRatio={aspectRatio} setAspectRatio={setAspectRatio} selectedAvatar={selectedAvatar} text={text} setText={setText} setLanguage={setLanguage} setVideoUrl={setVideoUrl} setAudioUrl={setAudioUrl} setSelectedAnchor={setSelectedAnchor}/>
           </div>
           <div className="col-span-3 flex flex-col p-4 space-y-8">
-            <Preview audioUrl={audioUrl} videoUrl={videoUrl} />
+            <Preview generationProgress={generationProgress} audioUrl={audioUrl} videoUrl={videoUrl} />
 
-            <AvatarSelection selectedAvatar={selectedAvatar} setSelectedAvatar={setSelectedAvatar} />
+            <div className="flex flex-col space-y-3">
+              <div className="flex space-x-2">
+                <button onClick={()=>changeMenu(0)} className="flex items-center space-x-1 border rounded-md px-2 py-1">
+                  <StarIcon className="size-5" />
+                  <span>Favorites</span>
+                </button>
+
+                <button onClick={()=>changeMenu(1)} className="flex items-center space-x-1 border rounded-md px-2 py-1">
+                  <PersonStanding className="size-5" />
+                  <span>Avatars</span>
+                </button>
+
+                <div className="flex items-center space-x-1 text-white">
+                  <Switch id="allow-reverse" className="bg-white" />
+                  <Label htmlFor="allow-reverse">Allow Reverse</Label>
+                </div>
+              </div>
+              <AvatarSelection favAvatars={selectedMenu===0?[]:null} selectedAvatar={selectedAvatar} setSelectedAvatar={setSelectedAvatar} />
+            </div>
           </div>
         </div>
       </div>

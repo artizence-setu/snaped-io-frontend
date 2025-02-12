@@ -8,6 +8,12 @@ import { interNormal } from "@/fonts/font"
 import { cn } from "@/lib/utils"
 import { RiGeminiLine } from "react-icons/ri"
 import VideoGeneration from "./video-generation"
+import { Label } from "@/components/ui/label"
+import { SelectOptions } from "@/components/select-options"
+import { HiOutlineDeviceMobile } from "react-icons/hi"
+import { IoTabletLandscapeOutline } from "react-icons/io5"
+import { FaRegSquare } from "react-icons/fa6"
+import AspectRatio from "./aspect-ratio"
 
 interface Language {
   value: string
@@ -28,20 +34,26 @@ interface TextInputProps {
   text: string
   selectedAvatar: string
   setText: (text: string) => void
+  aspectRatio: string
+  setAspectRatio: (text: string) => void
   setLanguage: (language: string) => void
   setAudioUrl: (url: string) => void
   setVideoUrl: (url: string) => void
   setSelectedAnchor: (anchor: string) => void
+  selectedVoice: string,
+  generationProgress: number
+  setGenerationProgress : (progress : number) => void;
+  setSelectedVoice: (text: string) => void
 }
 
-export default function TextInput({ text, setText, setLanguage, setAudioUrl, setVideoUrl, setSelectedAnchor , selectedAvatar}: TextInputProps) {
+export default function TextInput({ text, setText, setLanguage, setAudioUrl, setVideoUrl, setSelectedAnchor , selectedAvatar , aspectRatio , setAspectRatio , selectedVoice , setSelectedVoice , setGenerationProgress , generationProgress}: TextInputProps) {
   const [isLoading, setIsLoading] = useState(false)
   const [languages, setLanguages] = useState<Language[]>([])
   const [voices, setVoices] = useState<Voice[]>([])
   const [selectedLanguage, setSelectedLanguage] = useState("")
   const [selectedRegion, setSelectedRegion] = useState("")
   const [selectedVoiceCategory, setSelectedVoiceCategory] = useState("")
-  const [selectedVoice, setSelectedVoice] = useState("")
+  const [isGenerating, setIsGenerating] = useState(false)
   const [detectedLanguageInfo, setDetectedLanguageInfo] = useState<{
     language: string
     country: string
@@ -51,6 +63,24 @@ export default function TextInput({ text, setText, setLanguage, setAudioUrl, set
   const [isTextProcessed, setIsTextProcessed] = useState(false)
   const [successMessage, setSuccessMessage] = useState("")
   const [audioUrl, setAudioUrlState] = useState("")
+
+   const aspectRatioOptions = [
+      {
+        label: "Vertical (9:16)",
+        value: "9:16",
+        icon: HiOutlineDeviceMobile,
+      },
+      {
+        label: "Horizontal (16:9)",
+        value: "16:9",
+        icon: IoTabletLandscapeOutline,
+      },
+      {
+        label: "Square (1:1)",
+        value: "1:1",
+        icon: FaRegSquare,
+      },
+    ];
 
   useEffect(() => {
     fetchLanguages()
@@ -151,7 +181,8 @@ export default function TextInput({ text, setText, setLanguage, setAudioUrl, set
             setLanguage(selectedLangInfo.value)
           }
         }
-        setIsTextProcessed(true)
+        setIsTextProcessed(false) // SET THIS TO TRUE TO USE GENERATE SOUND BUTTON
+        
       } else {
         // Convert text to speech
         if (text && selectedVoice) {
@@ -224,6 +255,17 @@ export default function TextInput({ text, setText, setLanguage, setAudioUrl, set
               </Select>
             </div>
           )}
+
+          <div className="flex flex-col space-y-2">
+            <Label>Aspect Ratio</Label>
+            {/* <SelectOptions
+                  placeholder="Select an aspect ratio"
+                  options={aspectRatioOptions}
+                  onChange={(value) => setAspectRatio(value)}
+                  disabled={isLoading}
+            /> */}
+            <AspectRatio setAspectRatio={setAspectRatio} aspectRatio={[1,2]} />
+          </div>
           {
             (selectedLanguage !== "" && selectedLanguage !== "auto-detect" && languages.length>0) && 
             <div>
@@ -289,7 +331,8 @@ export default function TextInput({ text, setText, setLanguage, setAudioUrl, set
               </div>
             </>
           )}
-          <Button type="submit" disabled={isLoading} className="w-full">
+          {
+            !isGenerating && <Button type="submit" disabled={isLoading} className="w-full">
             {isLoading ? (
               <>
                 <svg
@@ -313,6 +356,7 @@ export default function TextInput({ text, setText, setLanguage, setAudioUrl, set
               "Process Text"
             )}
           </Button>
+          }
         </form>
         {successMessage && (
           <div className="mt-4">
@@ -321,7 +365,7 @@ export default function TextInput({ text, setText, setLanguage, setAudioUrl, set
         )}
       </CardContent>
 
-      <VideoGeneration setVideoUrl={setVideoUrl} audioUrl={audioUrl} language={selectedLanguage || "en"} text={text} selectedVoiceAnchor={selectedAvatar} />
+      <VideoGeneration setGenerationProgress={setGenerationProgress} isGenerating={isGenerating} setIsGenerating={setIsGenerating} selectedVoice={selectedVoice} setSelectedVoice={setSelectedVoice} setAudioUrl={setAudioUrl} setSelectedAnchor={setSelectedAnchor} setVideoUrl={setVideoUrl} audioUrl={audioUrl} language={selectedLanguage || "en"} text={text} selectedVoiceAnchor={selectedAvatar} />
     </Card>
   )
 }

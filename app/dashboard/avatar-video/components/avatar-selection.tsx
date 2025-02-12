@@ -15,19 +15,29 @@ interface Avatar {
 
 interface AvatarSelectionProps {
   selectedAvatar: string
+  favAvatars? : Avatar[] | null
   setSelectedAvatar: (avatarId: string) => void
 }
 
 const AVATARS_PER_PAGE = 8
 
-export default function AvatarSelection({ selectedAvatar, setSelectedAvatar }: AvatarSelectionProps) {
+export default function AvatarSelection({ selectedAvatar, setSelectedAvatar , favAvatars=null }: AvatarSelectionProps) {
   const [avatars, setAvatars] = useState<Avatar[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [visibleAvatars, setVisibleAvatars] = useState<Avatar[]>([])
   const [page, setPage] = useState(1)
 
   useEffect(() => {
+
+    if(favAvatars && favAvatars.length>0){
+      setAvatars(favAvatars)
+      setVisibleAvatars(favAvatars.slice(0, AVATARS_PER_PAGE))
+      setIsLoading(false)
+      return;
+    }
+
     const fetchAvatars = async () => {
+
       try {
         const response = await fetch("/api/avatars")
         const data = await response.json()
@@ -53,6 +63,12 @@ export default function AvatarSelection({ selectedAvatar, setSelectedAvatar }: A
 
   if (isLoading) {
     return <div className="text-center">Loading avatars...</div>
+  }
+
+  if (favAvatars !== null){
+    return (
+      <div className="flex items-center justify-center w-full h-40">No avatar found.</div>
+    )
   }
 
   return (
