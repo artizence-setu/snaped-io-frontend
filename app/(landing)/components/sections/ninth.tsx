@@ -50,7 +50,7 @@ const NinthSection = () => {
           <h2
             className={clsx(
               "text-2xl lg:text-3xl font-bold text-center text-gradient bg-custom-gradient bg-clip-text mb-2",
-              rubikMedium.className
+              rubikMedium.className,
             )}
           >
             Have Any Questions?
@@ -58,7 +58,7 @@ const NinthSection = () => {
           <p
             className={clsx(
               "text-center text-foreground/70 mb-8",
-              rubikLight.className
+              rubikLight.className,
             )}
           >
             Find answers to common queries and get the support you need to make
@@ -75,7 +75,7 @@ const NinthSection = () => {
                     "w-full text-left text-base lg:text-lg font-medium text-foreground/80 hover:bg-primary focus:outline-none flex justify-between items-center p-4 transition",
                     openIndex === index &&
                       "text-gradient bg-custom-gradient bg-clip-text pb-0",
-                    rubikNormal.className
+                    rubikNormal.className,
                   )}
                   onClick={() => toggleFAQ(index)}
                 >
@@ -89,13 +89,13 @@ const NinthSection = () => {
                     "transition-all duration-500 ease-in overflow-hidden",
                     openIndex === index
                       ? "max-h-96 opacity-100"
-                      : "max-h-0 opacity-0"
+                      : "max-h-0 opacity-0",
                   )}
                 >
                   <div
                     className={clsx(
                       "p-4 bg-background text-sm lg:text-base text-foreground",
-                      interNormal.className
+                      interNormal.className,
                     )}
                   >
                     {faq.answer}
@@ -110,7 +110,7 @@ const NinthSection = () => {
             <h2
               className={clsx(
                 "text-2xl lg:text-3xl font-bold underline text-gradient bg-custom-gradient bg-clip-text mb-2 self-start",
-                rubikMedium.className
+                rubikMedium.className,
               )}
             >
               Billings
@@ -127,7 +127,7 @@ const NinthSection = () => {
                       "w-full text-left text-base lg:text-lg font-medium text-foreground/80 hover:bg-primary focus:outline-none flex justify-between items-center p-4 transition",
                       openIndex === index &&
                         "text-gradient bg-custom-gradient bg-clip-text pb-0",
-                      rubikNormal.className
+                      rubikNormal.className,
                     )}
                     onClick={() => toggleFAQ(index)}
                   >
@@ -141,13 +141,13 @@ const NinthSection = () => {
                       "transition-all duration-500 ease-in overflow-hidden",
                       openIndex === index
                         ? "max-h-96 opacity-100"
-                        : "max-h-0 opacity-0"
+                        : "max-h-0 opacity-0",
                     )}
                   >
                     <div
                       className={clsx(
                         "p-4 bg-background text-foreground text-sm lg:text-base",
-                        interNormal.className
+                        interNormal.className,
                       )}
                     >
                       {faq.answer}

@@ -92,7 +92,6 @@ const VideoOptionsForm: React.FC<VideoOptionsProps> = ({
     { label: "Portrait 9:16 HD", value: "Portrait 9:16 HD" },
     { label: "Landscape 4:3 HD", value: "Landscape 4:3 HD" },
     { label: "Landscape 16:9 HD", value: "Landscape 16:9 HD" },
-
   ];
 
   const folderOptions = [
@@ -156,7 +155,7 @@ const VideoOptionsForm: React.FC<VideoOptionsProps> = ({
                         placeholder="Enter prompt......."
                         className={cn(
                           interNormal.className,
-                          "disabled:opacity-50"
+                          "disabled:opacity-50",
                         )}
                         disabled={isGenerating}
                         {...field}
@@ -194,7 +193,7 @@ const VideoOptionsForm: React.FC<VideoOptionsProps> = ({
                         placeholder="Enter script........"
                         className={cn(
                           interNormal.className,
-                          "disabled:opacity-50"
+                          "disabled:opacity-50",
                         )}
                         disabled={form.formState.isSubmitting || isGenerating}
                         {...field}
@@ -320,7 +319,7 @@ const VideoOptionsForm: React.FC<VideoOptionsProps> = ({
                 type="submit"
                 className={cn(
                   rubikNormal.className,
-                  "flex items-center gap-2 py-2"
+                  "flex items-center gap-2 py-2",
                 )}
                 disabled={form.formState.isSubmitting || isGenerating}
               >

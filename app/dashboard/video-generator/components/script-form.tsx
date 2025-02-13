@@ -47,7 +47,7 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
     setIsOpen(false);
     setIsGenerating(true);
     setMsg(
-      "We're currently generating your video! Once it's ready, we'll send it straight to your email. Stay tuned!"
+      "We're currently generating your video! Once it's ready, we'll send it straight to your email. Stay tuned!",
     );
     onScriptSubmit(data);
   };
@@ -81,7 +81,7 @@ const ScriptForm = ({ onScriptSubmit, defaultValues }: Props) => {
                         rows={5}
                         className={cn(
                           interNormal.className,
-                          "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 bg-primary disabled:opacity-50"
+                          "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 bg-primary disabled:opacity-50",
                         )}
                         disabled={form.formState.isSubmitting || isGenerating}
                         placeholder="Write your prompt here"

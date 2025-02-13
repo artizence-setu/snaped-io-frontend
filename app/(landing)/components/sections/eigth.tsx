@@ -47,7 +47,7 @@ const EigthSection = () => {
         <h2
           className={clsx(
             "text-2xl lg:text-3xl font-bold text-gradient bg-custom-gradient bg-clip-text mb-2",
-            rubikMedium.className
+            rubikMedium.className,
           )}
         >
           Pricing Plans
@@ -55,7 +55,7 @@ const EigthSection = () => {
         <p
           className={clsx(
             "text-base lg:text-lg text-foreground/90 font-light mb-6",
-            rubikLight.className
+            rubikLight.className,
           )}
         >
           Strikingly powerful, yet unbelievably affordable
@@ -64,7 +64,7 @@ const EigthSection = () => {
         <div
           className={clsx(
             "flex justify-center items-center bg-background relative mb-8 rounded-full text-sm lg:text-base",
-            rubikNormal.className
+            rubikNormal.className,
           )}
         >
           <button
@@ -100,7 +100,7 @@ const EigthSection = () => {
               key={idx}
               className={clsx(
                 "border rounded-xl px-4 py-4 bg-background shadow-lg",
-                rubikNormal.className
+                rubikNormal.className,
               )}
             >
               <h3 className="text-lg lg:text-xl mb-2 text-start text-foreground/50 font-light">
@@ -108,7 +108,7 @@ const EigthSection = () => {
               </h3>
               <p
                 className={clsx(
-                  "text-2xl lg:text-3xl font-normal mb-4 text-start"
+                  "text-2xl lg:text-3xl font-normal mb-4 text-start",
                 )}
               >
                 ${isYearly ? plan.price : (plan.price / 12).toFixed(2)}t/{" "}
@@ -129,7 +129,7 @@ const EigthSection = () => {
               <button
                 className={clsx(
                   "mt-4 px-6 py-2 bg-background border border-gradient text-foreground rounded-md hover:opacity-80 mb-3",
-                  idx == 1 ? "bg-custom-gradient text-white" : "rounded-lg"
+                  idx == 1 ? "bg-custom-gradient text-white" : "rounded-lg",
                 )}
               >
                 Start Free Trial Today

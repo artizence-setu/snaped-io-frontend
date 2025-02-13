@@ -10,7 +10,7 @@ const SecondSection = () => {
           <h2
             className={clsx(
               "text-2xl lg:text-3xl tracking-wider font-bold text-foreground/80",
-              rubikMedium.className
+              rubikMedium.className,
             )}
           >
             Turn Your Text into Engaging Faceless Video
@@ -18,7 +18,7 @@ const SecondSection = () => {
           <p
             className={clsx(
               "text-lg lg:text-xl text-secondary-foreground/80 tracking-wider leading-6 mt-4",
-              interNormal.className
+              interNormal.className,
             )}
           >
             Transform your written content into dynamic, engaging videos in just

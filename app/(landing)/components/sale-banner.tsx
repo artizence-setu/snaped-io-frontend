@@ -6,7 +6,7 @@ const SaleBanner = () => {
     <div
       className={clsx(
         "bg-custom-gradient text-center text-sm sm:text-base text-white py-1 px-2",
-        rubikMedium.className
+        rubikMedium.className,
       )}
     >
       LAST CHANCE Black Friday Sale ends this week!{" "}

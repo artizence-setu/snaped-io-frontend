@@ -71,13 +71,13 @@ const SignInAuthForm = () => {
       <div
         className={cn(
           "bg-background max-w-md w-full rounded-lg p-4 shadow-lg",
-          interNormal.className
+          interNormal.className,
         )}
       >
         <h2
           className={cn(
             "text-xl tracking-wide text-center",
-            interMedium.className
+            interMedium.className,
           )}
         >
           SignUp To Snaped

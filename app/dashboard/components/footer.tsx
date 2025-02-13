@@ -7,7 +7,7 @@ const Footer = () => {
     <footer
       className={cn(
         "w-full border-t flex flex-col justify-center md:flex-row items-center md:justify-between gap-2 p-4 bg-background",
-        interNormal.className
+        interNormal.className,
       )}
     >
       <p className="text-sm text-gray-500 dark:text-gray-400">

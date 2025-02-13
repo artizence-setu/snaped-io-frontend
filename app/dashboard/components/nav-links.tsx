@@ -16,7 +16,7 @@ const useNavLinks = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className={clsx(
-            pathname === "/dashboard" ? "nav-icon-active" : "nav-icon"
+            pathname === "/dashboard" ? "nav-icon-active" : "nav-icon",
           )}
         >
           <path
@@ -53,7 +53,7 @@ const useNavLinks = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className={clsx(
-            pathname === "/dashboard/ideas" ? "nav-icon-active" : "nav-icon"
+            pathname === "/dashboard/ideas" ? "nav-icon-active" : "nav-icon",
           )}
         >
           <path
@@ -90,7 +90,7 @@ const useNavLinks = () => {
           className={clsx(
             pathname === "/dashboard/video-editor"
               ? "nav-icon2-active"
-              : "nav-icon2"
+              : "nav-icon2",
           )}
         >
           <defs>
@@ -140,7 +140,7 @@ const useNavLinks = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className={clsx(
-            pathname === "/dashboard/publish" ? "nav-icon-active" : "nav-icon"
+            pathname === "/dashboard/publish" ? "nav-icon-active" : "nav-icon",
           )}
         >
           <path
@@ -175,7 +175,7 @@ const useNavLinks = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className={clsx(
-            pathname === "/dashboard/myvideos" ? "nav-icon-active" : "nav-icon"
+            pathname === "/dashboard/myvideos" ? "nav-icon-active" : "nav-icon",
           )}
         >
           <defs>
@@ -223,7 +223,7 @@ const useNavLinks = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className={clsx(
-            pathname === "/dashboard/calender" ? "nav-icon-active" : "nav-icon"
+            pathname === "/dashboard/calender" ? "nav-icon-active" : "nav-icon",
           )}
         >
           <path

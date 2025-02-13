@@ -10,7 +10,7 @@ const ForthSection = () => {
           <h2
             className={clsx(
               "text-2xl lg:text-3xl tracking-wider font-bold text-foreground/80",
-              rubikMedium.className
+              rubikMedium.className,
             )}
           >
             No One to Record? Let Our AI Characters Do It for You!
@@ -18,7 +18,7 @@ const ForthSection = () => {
           <p
             className={clsx(
               "text-lg lg:text-xl text-secondary-foreground/80 tracking-wider leading-6 mt-4",
-              interNormal.className
+              interNormal.className,
             )}
           >
             Forget the hassle of finding someone to record your videos. With our

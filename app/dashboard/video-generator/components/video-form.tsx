@@ -16,7 +16,7 @@ const VideoGeneratorForm = () => {
 
   const handleSubmit = async (
     data: Partial<typeof defaultValues>,
-    isAIMode: boolean
+    isAIMode: boolean,
   ) => {
     try {
       const res = await axiosInstance.post(
@@ -37,7 +37,7 @@ const VideoGeneratorForm = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${getCookie("access_token")}`,
           },
-        }
+        },
       );
       console.log("Response:", res.data);
     } catch (error) {

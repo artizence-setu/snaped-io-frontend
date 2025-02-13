@@ -35,7 +35,7 @@ const SeventhSection = () => {
         <h3
           className={clsx(
             "bg-custom-gradient text-gradient bg-clip-text text-2xl lg:text-3xl font-semibold",
-            rubikMedium.className
+            rubikMedium.className,
           )}
         >
           How Snapped Works
@@ -43,7 +43,7 @@ const SeventhSection = () => {
         <p
           className={clsx(
             "text-foreground/90 lg:w-2/4 text-base lg:text-lg mt-4 leading-5",
-            rubikLight.className
+            rubikLight.className,
           )}
         >
           Learn how Snaped simplifies video creation in just a few
@@ -76,7 +76,7 @@ const SeventhSection = () => {
                   <p
                     className={clsx(
                       "text-foreground/70 leading-5 tracking-wider",
-                      interLight.className
+                      interLight.className,
                     )}
                   >
                     {step.description}

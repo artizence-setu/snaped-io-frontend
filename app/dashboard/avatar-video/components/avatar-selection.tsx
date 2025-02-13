@@ -1,83 +1,90 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface Avatar {
-  _id: string
-  type: string
-  video_cover: string
-  base_video: string
-  lang: string[]
+  _id: string;
+  type: string;
+  video_cover: string;
+  base_video: string;
+  lang: string[];
 }
 
 interface AvatarSelectionProps {
-  selectedAvatar: string
-  favAvatars? : Avatar[] | null
-  setSelectedAvatar: (avatarId: string) => void
+  selectedAvatar: string;
+  favAvatars?: Avatar[] | null;
+  setSelectedAvatar: (avatarId: string) => void;
 }
 
-const AVATARS_PER_PAGE = 8
+const AVATARS_PER_PAGE = 8;
 
-export default function AvatarSelection({ selectedAvatar, setSelectedAvatar , favAvatars=null }: AvatarSelectionProps) {
-  const [avatars, setAvatars] = useState<Avatar[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [visibleAvatars, setVisibleAvatars] = useState<Avatar[]>([])
-  const [page, setPage] = useState(1)
+export default function AvatarSelection({
+  selectedAvatar,
+  setSelectedAvatar,
+  favAvatars = null,
+}: AvatarSelectionProps) {
+  const [avatars, setAvatars] = useState<Avatar[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [visibleAvatars, setVisibleAvatars] = useState<Avatar[]>([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-
-    if(favAvatars && favAvatars.length>0){
-      setAvatars(favAvatars)
-      setVisibleAvatars(favAvatars.slice(0, AVATARS_PER_PAGE))
-      setIsLoading(false)
+    if (favAvatars && favAvatars.length > 0) {
+      setAvatars(favAvatars);
+      setVisibleAvatars(favAvatars.slice(0, AVATARS_PER_PAGE));
+      setIsLoading(false);
       return;
     }
 
     const fetchAvatars = async () => {
-
       try {
-        const response = await fetch("/api/avatars")
-        const data = await response.json()
-        setAvatars(data.avatars)
-        setVisibleAvatars(data.avatars.slice(0, AVATARS_PER_PAGE))
+        const response = await fetch("/api/avatars");
+        const data = await response.json();
+        setAvatars(data.avatars);
+        setVisibleAvatars(data.avatars.slice(0, AVATARS_PER_PAGE));
       } catch (error) {
-        console.error("Error fetching avatars:", error)
+        console.error("Error fetching avatars:", error);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
 
-    fetchAvatars()
-  }, [])
+    fetchAvatars();
+  }, []);
 
   const loadMoreAvatars = () => {
-    const nextPage = page + 1
-    const startIndex = (nextPage - 1) * AVATARS_PER_PAGE
-    const endIndex = startIndex + AVATARS_PER_PAGE
-    setVisibleAvatars([...visibleAvatars, ...avatars.slice(startIndex, endIndex)])
-    setPage(nextPage)
-  }
+    const nextPage = page + 1;
+    const startIndex = (nextPage - 1) * AVATARS_PER_PAGE;
+    const endIndex = startIndex + AVATARS_PER_PAGE;
+    setVisibleAvatars([
+      ...visibleAvatars,
+      ...avatars.slice(startIndex, endIndex),
+    ]);
+    setPage(nextPage);
+  };
 
   if (isLoading) {
-    return <div className="text-center">Loading avatars...</div>
+    return <div className="text-center">Loading avatars...</div>;
   }
 
-  if (favAvatars !== null){
+  if (favAvatars !== null) {
     return (
-      <div className="flex items-center justify-center w-full h-40">No avatar found.</div>
-    )
+      <div className="flex items-center justify-center w-full h-40">
+        No avatar found.
+      </div>
+    );
   }
 
   return (
     <div className="space-y-4">
       <h1>Select Avatar</h1>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {visibleAvatars.map((avatar) => (
+        {visibleAvatars.map((avatar, _) => (
           <Card
-            key={avatar._id}
+            key={`${avatar._id}_${_}`}
             className={`cursor-pointer transition-all ${selectedAvatar === avatar._id ? "ring-2 ring-primary opacity-65" : ""}`}
             onClick={() => setSelectedAvatar(avatar._id)}
           >
@@ -91,8 +98,12 @@ export default function AvatarSelection({ selectedAvatar, setSelectedAvatar , fa
                   className="rounded-md"
                 />
               </div>
-              <p className="text-center text-sm font-medium truncate">Avatar {avatar._id.slice(-4)}</p>
-              <p className="text-center text-xs text-muted-foreground">{avatar.lang.join(", ")}</p>
+              <p className="text-center text-sm font-medium truncate">
+                Avatar {avatar._id.slice(-4)}
+              </p>
+              <p className="text-center text-xs text-muted-foreground">
+                {avatar.lang.join(", ")}
+              </p>
             </CardContent>
           </Card>
         ))}
@@ -105,6 +116,5 @@ export default function AvatarSelection({ selectedAvatar, setSelectedAvatar , fa
         </div>
       )}
     </div>
-  )
+  );
 }
-

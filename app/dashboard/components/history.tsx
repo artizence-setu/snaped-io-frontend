@@ -21,7 +21,7 @@ const History = () => {
       <h2
         className={cn(
           "font-extralight mb-2 text-lg text-foreground/80",
-          interNormal.className
+          interNormal.className,
         )}
       >
         History
@@ -32,7 +32,7 @@ const History = () => {
             key={index}
             className={cn(
               "bg-gray-200 dark:bg-[#404040] shadow px-4 pt-4 pb-2 rounded-lg flex flex-col",
-              interNormal.className
+              interNormal.className,
             )}
           >
             <p className="text-base font-extralight text-foreground/80">

@@ -111,7 +111,7 @@ const ReferralPage = () => {
       <div
         className={cn(
           "bg-background shadow rounded-lg border p-4 w-full text-[17px]",
-          interNormal.className
+          interNormal.className,
         )}
       >
         <div className="flex items-center justify-between flex-wrap pr-20">
@@ -149,7 +149,7 @@ const ReferralPage = () => {
                     <p
                       className={cn(
                         "bg-primary p-1 rounded-full size-7 flex items-center justify-center",
-                        interMedium.className
+                        interMedium.className,
                       )}
                     >
                       {step.step}
@@ -167,7 +167,7 @@ const ReferralPage = () => {
                   <Button
                     className={cn(
                       "w-full sm:w-48 py-2 text-[17px] rounded",
-                      interLight.className
+                      interLight.className,
                     )}
                   >
                     Send
@@ -181,7 +181,7 @@ const ReferralPage = () => {
                   <Button
                     className={cn(
                       "w-full sm:w-48 py-2 text-[17px] rounded",
-                      interLight.className
+                      interLight.className,
                     )}
                   >
                     <Copy className="size-4 mr-2" />
@@ -198,7 +198,7 @@ const ReferralPage = () => {
                   key={index}
                   className={cn(
                     "grid grid-cols-4 p-2 rounded-md gap-2 sm:gap-4",
-                    index % 2 == 0 ? "bg-primary" : "bg-background"
+                    index % 2 == 0 ? "bg-primary" : "bg-background",
                   )}
                 >
                   <p className="overflow-hidden text-start">{referral.name}</p>

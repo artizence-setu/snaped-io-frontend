@@ -98,7 +98,7 @@ const TextForm: React.FC<TextFormProps> = ({
                   <textarea
                     className={cn(
                       interNormal.className,
-                      "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 w-full"
+                      "border-2 rounded-lg px-2 py-2 focus:border-2 focus:border-purple-600 w-full",
                     )}
                     rows={6}
                     placeholder="Writer your script here......"

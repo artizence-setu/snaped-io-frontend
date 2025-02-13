@@ -1,10 +1,13 @@
-import { NextResponse } from "next/server"
+import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const { text, voiceId } = await request.json()
+  const { text, voiceId } = await request.json();
 
   if (!text || !voiceId) {
-    return NextResponse.json({ error: "Text and anchor ID are required" }, { status: 400 })
+    return NextResponse.json(
+      { error: "Text and anchor ID are required" },
+      { status: 400 },
+    );
   }
 
   try {
@@ -19,17 +22,19 @@ export async function POST(request: Request) {
         tts_id: voiceId,
         speechRate: 1,
       }),
-    })
+    });
 
-    const data = await response.json()
+    const data = await response.json();
     if (data.code === 0 && data.data) {
-      return NextResponse.json({ audioUrl: data.data })
+      return NextResponse.json({ audioUrl: data.data });
     } else {
-      throw new Error(data.msg || "Failed to convert text to speech")
+      throw new Error(data.msg || "Failed to convert text to speech");
     }
   } catch (error) {
-    console.error("Error converting text to speech:", error)
-    return NextResponse.json({ error: "Failed to convert text to speech" }, { status: 500 })
+    console.error("Error converting text to speech:", error);
+    return NextResponse.json(
+      { error: "Failed to convert text to speech" },
+      { status: 500 },
+    );
   }
 }
-

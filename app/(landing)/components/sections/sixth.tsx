@@ -50,7 +50,7 @@ const SixthSection = () => {
             <p
               className={clsx(
                 "text-lg md:text-2xl font-bold",
-                interBold.className
+                interBold.className,
               )}
             >
               See our AI in{" "}
@@ -61,7 +61,7 @@ const SixthSection = () => {
             <p
               className={clsx(
                 "text-xl md:text-2xl lg:text-3xl font-bold mt-2 mx-2",
-                interBold.className
+                interBold.className,
               )}
             >
               Create{" "}

@@ -27,7 +27,7 @@ const LandingPageHeader = () => {
             key={option}
             className={clsx(
               "text-sm font-medium hover:text-blue-600 cursor-pointer transition-colors",
-              interNormal.className
+              interNormal.className,
             )}
           >
             {option}
@@ -39,7 +39,7 @@ const LandingPageHeader = () => {
           <button
             className={clsx(
               "px-4 py-2 rounded-lg text-sm bg-transparent border hover:opacity-60 transition-all",
-              interNormal.className
+              interNormal.className,
             )}
           >
             Login

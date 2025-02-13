@@ -37,7 +37,7 @@ const VideoOptions = () => {
       <h2
         className={cn(
           "font-extralight mb-2 text-lg text-foreground/80",
-          interNormal.className
+          interNormal.className,
         )}
       >
         Create Video With Options
@@ -51,7 +51,7 @@ const VideoOptions = () => {
             <h3
               className={cn(
                 "text-lg font-extralight text-center text-foreground/80",
-                interNormal.className
+                interNormal.className,
               )}
             >
               {option.title}
@@ -68,7 +68,7 @@ const VideoOptions = () => {
             <p
               className={cn(
                 "mt-4 font-extralight text-foreground/70",
-                interLight.className
+                interLight.className,
               )}
             >
               {option.description}

@@ -21,7 +21,7 @@ const SideNavbar = () => {
             className={clsx(
               "flex gap-3 px-4 py-2 text-lg w-full hover:bg-blue-100 transition-all group dark:hover:bg-gray-900 nav-link",
               pathname === item.href && "bg-blue-100 dark:bg-gray-900",
-              interNormal.className
+              interNormal.className,
             )}
           >
             <div className="w-12 h-10 flex items-center justify-center">
@@ -32,7 +32,7 @@ const SideNavbar = () => {
                 className={clsx(
                   "text-foreground/70 bg-foreground/70 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all",
                   pathname === item.href &&
-                    "bg-custom-gradient bg-clip-text text-gradient"
+                    "bg-custom-gradient bg-clip-text text-gradient",
                 )}
               >
                 {item.name}
@@ -41,7 +41,7 @@ const SideNavbar = () => {
                 className={clsx(
                   "text-foreground/70 bg-foreground/70 text-[10px] leading-3 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all",
                   pathname === item.href &&
-                    "bg-custom-gradient bg-clip-text text-gradient"
+                    "bg-custom-gradient bg-clip-text text-gradient",
                 )}
               >
                 {item.brief}

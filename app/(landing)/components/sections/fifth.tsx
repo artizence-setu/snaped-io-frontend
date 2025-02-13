@@ -19,7 +19,7 @@ const FifthSection = () => {
           <h2
             className={clsx(
               "text-2xl lg:text-3xl font-bold tracking-wider text-foreground/80",
-              rubikMedium.className
+              rubikMedium.className,
             )}
           >
             Effortless Video Editing at Your Fingertips
@@ -27,7 +27,7 @@ const FifthSection = () => {
           <p
             className={clsx(
               "text-lg lg:text-xl text-secondary-foreground/80 tracking-wider leading-6 mt-4",
-              interNormal.className
+              interNormal.className,
             )}
           >
             Editing videos has never been this easy! With our intuitive

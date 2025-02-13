@@ -39,7 +39,7 @@ const LandingPageFooter = () => {
     <footer
       className={clsx(
         "bg-custom-gradient bg-opacity-80 text-white",
-        rubikLight.className
+        rubikLight.className,
       )}
     >
       <div className="flex flex-wrap gap-x-8 gap-y-8 sm:gap-x-12 md:gap-x-16 lg:gap-x-20 xl:gap-x-28 py-10 px-4 sm:px-6 md:px-8 lg:px-20">
@@ -67,7 +67,7 @@ const LandingPageFooter = () => {
             <p
               className={clsx(
                 "text-lg font-semibold mb-2",
-                rubikNormal.className
+                rubikNormal.className,
               )}
             >
               Product
@@ -80,7 +80,7 @@ const LandingPageFooter = () => {
             <h3
               className={clsx(
                 "text-lg font-semibold mb-2",
-                rubikNormal.className
+                rubikNormal.className,
               )}
             >
               Resources
@@ -93,7 +93,7 @@ const LandingPageFooter = () => {
             <h3
               className={clsx(
                 "text-lg font-semibold mb-2",
-                rubikNormal.className
+                rubikNormal.className,
               )}
             >
               Social
@@ -108,7 +108,7 @@ const LandingPageFooter = () => {
         <p
           className={clsx(
             "text-center text-base tracking-wider",
-            rubikLight.className
+            rubikLight.className,
           )}
         >
           © 2024 Snaped. All rights reserved.

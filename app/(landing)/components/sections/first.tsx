@@ -27,7 +27,7 @@ const FirstSection = () => {
           <h1
             className={clsx(
               "text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#1c2946] dark:text-gray-300/90 font-semibold leading-tight",
-              rubikMedium.className
+              rubikMedium.className,
             )}
           >
             Generate Faceless Videos from any Idea for{" "}
@@ -39,7 +39,7 @@ const FirstSection = () => {
           <p
             className={clsx(
               "text-sm sm:text-base md:text-lg lg:text-xl mt-3 font-extralight md:w-[83%] text-foreground/80 tracking-wide",
-              interNormal.className
+              interNormal.className,
             )}
           >
             Turn your ideas into faceless videos in minutes with our AI-powered

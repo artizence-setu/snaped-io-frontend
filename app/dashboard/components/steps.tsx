@@ -66,7 +66,7 @@ const Steps = () => {
             <p
               className={cn(
                 "text-secondary-foreground/80 text-sm leading-5 tracking-wider",
-                interLight.className
+                interLight.className,
               )}
             >
               {step.description}

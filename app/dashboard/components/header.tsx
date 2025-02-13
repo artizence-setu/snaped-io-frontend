@@ -82,7 +82,7 @@ const Header = () => {
                     className={clsx(
                       "flex gap-3 px-4 py-2 text-lg w-full hover:bg-blue-100 transition-all group dark:hover:bg-gray-900 nav-link rounded-md",
                       pathname === item.href && "bg-blue-100 dark:bg-gray-900",
-                      interNormal.className
+                      interNormal.className,
                     )}
                   >
                     <div className="w-12 h-10 flex items-center justify-center">
@@ -93,7 +93,7 @@ const Header = () => {
                         className={clsx(
                           "text-foreground/70 bg-foreground/70 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all",
                           pathname === item.href &&
-                            "bg-custom-gradient bg-clip-text text-gradient"
+                            "bg-custom-gradient bg-clip-text text-gradient",
                         )}
                       >
                         {item.name}
@@ -102,7 +102,7 @@ const Header = () => {
                         className={clsx(
                           "text-foreground/70 bg-foreground/70 text-[10px] leading-3 group-hover:bg-custom-gradient bg-clip-text text-gradient transition-all",
                           pathname === item.href &&
-                            "bg-custom-gradient bg-clip-text text-gradient"
+                            "bg-custom-gradient bg-clip-text text-gradient",
                         )}
                       >
                         {item.brief}
@@ -125,7 +125,7 @@ const Header = () => {
           onClick={() => router.push("/dashboard/video-generator")}
           className={cn(
             "bg-custom-gradient py-1 px-4 text-white rounded-md flex items-center gap-2 hover:opacity-80 transition",
-            interNormal.className
+            interNormal.className,
           )}
         >
           <p>Create Video</p>
@@ -135,7 +135,7 @@ const Header = () => {
         <p
           className={cn(
             "bg-primary rounded-md text-foreground py-1 px-2",
-            interNormal.className
+            interNormal.className,
           )}
         >
           💰 <span className="text-gradient bg-custom-gradient">300</span>
@@ -147,7 +147,7 @@ const Header = () => {
             onClick={() => setDropdownOpen(!dropdownOpen)}
             className={cn(
               "bg-[#F3E1E1] dark:bg-[#cb7878] h-9 w-9 rounded-full flex items-center justify-center cursor-pointer",
-              rubikNormal.className
+              rubikNormal.className,
             )}
           >
             R
@@ -156,7 +156,7 @@ const Header = () => {
             ref={dropdownRef}
             className={clsx(
               "absolute top-12 right-0 w-56 bg-background shadow-lg rounded-md transition-all px-4 py-2",
-              dropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
+              dropdownOpen ? "opacity-100 visible" : "opacity-0 invisible",
             )}
           >
             {userOptions.map((option, index) => (
@@ -164,7 +164,7 @@ const Header = () => {
                 key={index}
                 className={cn(
                   "flex items-center gap-2 text-base cursor-pointer py-2 hover:bg-primary transition-all rounded px-2",
-                  interNormal.className
+                  interNormal.className,
                 )}
               >
                 <option.icon className="size-5 text-foreground/70" />

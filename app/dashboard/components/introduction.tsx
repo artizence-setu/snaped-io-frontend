@@ -11,7 +11,7 @@ const Introduction = () => {
         <h3
           className={cn(
             "text-lg font-extralight text-foreground/80",
-            rubikLight.className
+            rubikLight.className,
           )}
         >
           Introduction to our new Blog to Video
